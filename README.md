@@ -1,8 +1,9 @@
 # Maître Catalog
 
 The curated list of Services a Maître Fleet can install. MIT licensed so
-anyone can fork, add entries, or run their own Catalog. This directory will
-become its own repository; it lives in the monorepo until then.
+anyone can fork, add entries, or run their own Catalog. Maître Server
+(https://github.com/Onfire7/maitre-de-serveur) includes this repository as a
+git submodule and bakes the generated index into its image.
 
 ## Layout
 
