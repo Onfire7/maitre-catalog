@@ -1,0 +1,11 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Environment=EULA={{ .Settings.EULA }}
+Environment=VERSION={{ .Settings.VERSION }}
+Environment=MEMORY={{ .Settings.MEMORY }}
+Environment=MOTD={{ .Settings.MOTD }}
+Environment=TZ={{ .Settings.TZ }}
+Volume={{ .Volumes.data }}:/data:Z
+Network={{ .Network }}
+PublishPort=25565:25565/tcp

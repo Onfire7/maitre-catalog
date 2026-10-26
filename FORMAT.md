@@ -17,6 +17,9 @@ own_login: false             # true if the app has its own accounts (changes Con
 infrastructure: false        # DHCP/DNS style: reserved address, early start
 host_ports:                  # ports the app must own on the Node itself
   - 53/udp
+port_forward: false          # true: the app is meant to be reached from the internet at
+                             # host_ports (a game server); the Console offers to have the
+                             # router forward them (UPnP). Off until the user turns it on.
 web:                         # the page the Console opens; omit for headless apps
   port: 8096
   path: /
