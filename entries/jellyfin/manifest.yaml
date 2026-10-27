@@ -21,6 +21,7 @@ volumes:
   - name: media
     path: /media
     size: large
+    shared: true
 settings:
   - key: TZ
     label: Time zone

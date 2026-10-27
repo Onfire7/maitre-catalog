@@ -29,6 +29,7 @@ volumes:                     # named data dirs; placed at <pool>/<service>/<name
   - name: media
     path: /media
     size: large              # small | medium | large: hint for Tier choice
+    shared: true             # suggest a folder the user picks, shared with other Services (decision 175)
 settings:                    # asked at install, available to the template as {{ .Settings.KEY }}
   - key: TZ
     label: Time zone
