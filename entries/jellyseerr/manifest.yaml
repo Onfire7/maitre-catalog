@@ -1,0 +1,36 @@
+id: jellyseerr
+name: Jellyseerr
+summary: Let your household ask for films and series, and send them to Sonarr and Radarr.
+description: |
+  Jellyseerr shows what is on your Jellyfin, Emby or Plex server and lets the
+  people who use it ask for more; approved requests go to Sonarr and Radarr. The
+  first visit connects it to your media server.
+icon: icon.svg
+category: media
+image: docker.io/fallenbagel/jellyseerr:2.7.3@sha256:4538137bc5af902dece165f2bf73776d9cf4eafb6dd714670724af8f3eb77764
+version: 2.7.3
+project: https://github.com/fallenbagel/jellyseerr
+exposure: private
+own_login: true
+web:
+  port: 5055
+  path: /
+volumes:
+  - name: jellyseerr
+    path: /app/config
+settings:
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /api/v1/status
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Jellyseerr/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/jellyseerr.svg

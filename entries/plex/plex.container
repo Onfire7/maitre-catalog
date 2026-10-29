@@ -1,0 +1,13 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+{{ if .Grants.discovery }}Network=host
+{{ else }}Network={{ .Network }}
+{{ end }}{{ if .Grants.hardware_transcoding }}{{ with .Settings.GPU }}AddDevice={{ . }}
+{{ end }}{{ end }}Environment="PGID={{ .Settings.PGID }}"
+Environment="PUID={{ .Settings.PUID }}"
+Environment="TZ={{ .Settings.TZ }}"
+Environment="PLEX_CLAIM={{ .Settings.PLEX_CLAIM }}"
+Environment=VERSION=docker
+Volume={{ .Volumes.config }}:/config:Z
+Volume={{ .Volumes.media }}:/Media:z

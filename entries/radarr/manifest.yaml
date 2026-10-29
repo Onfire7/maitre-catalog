@@ -1,0 +1,49 @@
+id: radarr
+name: Radarr
+summary: Keep a list of films you want and fetch them when they are out.
+description: |
+  Radarr keeps a list of the films you want, sends them to your download client when they are available and files them in your films folder, named and sorted.
+  The first visit sets up its login.
+icon: icon.svg
+category: media
+image: docker.io/linuxserver/radarr:6.3.0@sha256:fe051413dfd91b383ba04910552e83fb0306895fefee275c48dafe7bb90807dc
+version: 6.3.0
+project: https://github.com/Radarr/Radarr
+exposure: private
+own_login: true
+web:
+  port: 7878
+  path: /
+volumes:
+  - name: config
+    path: /config
+  - name: downloads
+    path: /downloads
+    shared: true
+  - name: movies
+    path: /movies
+    shared: true
+settings:
+  - key: PGID
+    label: Run Radarr as specified gid.
+    type: text
+    default: '1000'
+  - key: PUID
+    label: Run Radarr as specified uid.
+    type: text
+    default: '1000'
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /ping
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Radarr/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/radarr.svg

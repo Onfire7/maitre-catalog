@@ -1,0 +1,7 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment=LOG_LEVEL=info
+Environment="TZ={{ .Settings.TZ }}"
+Volume={{ .Volumes.jellyseerr }}:/app/config:Z

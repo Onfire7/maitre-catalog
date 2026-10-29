@@ -1,0 +1,33 @@
+id: linkding
+name: linkding
+summary: Save, tag and search your bookmarks, with copies of the pages kept.
+description: |
+  linkding is a bookmark manager: save links from its browser extension or
+  bookmarklet, tag them, search them, and keep a copy of each page in case it
+  disappears. Sign in as admin with the password made up at install.
+category: tools
+image: docker.io/sissbruecker/linkding:1.47.0@sha256:e35cb50e0581178f245125ffaa909c565416c94c9f22ace305a7d234a4345522
+version: 1.47.0
+project: https://github.com/sissbruecker/linkding
+exposure: private
+own_login: true
+web:
+  port: 9090
+  path: /
+volumes:
+  - name: data
+    path: /etc/linkding/data
+settings:
+  - key: ADMIN_PASSWORD
+    label: Password of the admin account
+    type: password
+    default: generate
+health:
+  http: /health
+source:
+  from: hand
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/linkding.svg
+icon: icon.svg

@@ -1,0 +1,49 @@
+id: sonarr
+name: Sonarr
+summary: Follow your series and fetch new episodes as they air.
+description: |
+  Sonarr watches for new episodes of the series you follow, sends them to your download client and files them in your series folder, named and sorted.
+  The first visit sets up its login.
+icon: icon.svg
+category: media
+image: docker.io/linuxserver/sonarr:4.0.19@sha256:82172b363f9eddc02aca544f880a044f2ceb9aaf190bc87e4454e2f705eb91d0
+version: 4.0.19
+project: https://github.com/Sonarr/Sonarr
+exposure: private
+own_login: true
+web:
+  port: 8989
+  path: /
+volumes:
+  - name: config
+    path: /config
+  - name: downloads
+    path: /downloads
+    shared: true
+  - name: tv_shows
+    path: /tv
+    shared: true
+settings:
+  - key: PGID
+    label: Run Sonarr as specified gid.
+    type: text
+    default: '1000'
+  - key: PUID
+    label: Run Sonarr as specified uid.
+    type: text
+    default: '1000'
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /ping
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Sonarr/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/sonarr.svg

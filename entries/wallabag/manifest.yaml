@@ -1,0 +1,33 @@
+id: wallabag
+name: Wallabag
+summary: Save articles from the web to read later, on any device, without the clutter.
+description: |
+  Wallabag saves the articles you want to read later, strips them to their
+  text and images, and keeps them for its apps and browser extensions. Sign in
+  first as wallabag with the password wallabag, then change it.
+icon: icon.svg
+category: tools
+image: docker.io/wallabag/wallabag:2.6.14@sha256:4a527e027e0d59e87c14225ef11e005af3d4890374202ad319ce5e63dfc66709
+version: 2.6.14
+project: https://github.com/wallabag/wallabag
+exposure: private
+own_login: true
+web:
+  port: 80
+  path: /
+volumes:
+  - name: data
+    path: /var/www/wallabag/data
+  - name: images
+    path: /var/www/wallabag/web/assets/images
+health:
+  http: /api/info
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Wallabag/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/wallabag.svg

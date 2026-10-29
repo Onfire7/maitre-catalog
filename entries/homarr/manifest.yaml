@@ -1,0 +1,38 @@
+id: homarr
+name: Homarr
+summary: A start page for your home server, with every app and its status in one place.
+description: |
+  Homarr is a dashboard: arrange tiles for your apps, bookmarks and widgets
+  (weather, calendars, media, downloads) and see at a glance what is up. The
+  first visit creates its admin account.
+icon: icon.svg
+category: tools
+image: ghcr.io/homarr-labs/homarr:v2.0.0@sha256:3eeef80bfc58f6588844e9405da47550f681006d3019005a34f9388b5c00eb73
+version: 2.0.0
+project: https://github.com/homarr-labs/homarr
+exposure: private
+own_login: true
+web:
+  port: 7575
+  path: /
+volumes:
+  - name: appdata
+    path: /appdata
+settings:
+  - key: SECRET_ENCRYPTION_KEY
+    label: Key that encrypts its stored secrets
+    type: password
+    default: generate
+    format: hex
+    bytes: 32
+health:
+  http: /api/health/live
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/05e3501e90017f2eb74d29f5d5bef13c3615a0af/Apps/homarr-v2/docker-compose.yml
+  licence: MIT
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/homarr.svg

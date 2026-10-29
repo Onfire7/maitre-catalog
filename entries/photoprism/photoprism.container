@@ -1,0 +1,9 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment="PHOTOPRISM_ADMIN_PASSWORD={{ .Settings.ADMIN_PASSWORD }}"
+Environment=PHOTOPRISM_UPLOAD_NSFW=true
+Environment="TZ={{ .Settings.TZ }}"
+Volume={{ .Volumes.storage }}:/photoprism/storage:Z
+Volume={{ .Volumes.gallery }}:/photoprism/originals:z

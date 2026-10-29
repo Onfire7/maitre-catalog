@@ -1,0 +1,7 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment=LD_SUPERUSER_NAME=admin
+Environment="LD_SUPERUSER_PASSWORD={{ .Settings.ADMIN_PASSWORD }}"
+Volume={{ .Volumes.data }}:/etc/linkding/data:Z

@@ -1,0 +1,44 @@
+id: photoprism
+name: PhotoPrism
+summary: Browse, search and organise your photos, found by place, face and subject.
+description: |
+  PhotoPrism indexes the photos and videos in a folder you pick and lets you
+  browse them by date, place, person and what is in them, without changing the
+  files. Sign in as admin with the password made up at install. It needs a few
+  gigabytes of memory while it indexes.
+icon: icon.svg
+category: media
+image: docker.io/photoprism/photoprism:260523@sha256:ee3d15cf76f80c2fb4a28c336a63173b0c671ed7a3dd9ec0ed6231b7defa8876
+version: '260523'
+project: https://github.com/photoprism/photoprism
+exposure: private
+own_login: true
+web:
+  port: 2342
+  path: /
+volumes:
+  - name: gallery
+    path: /photoprism/originals
+    shared: true
+  - name: storage
+    path: /photoprism/storage
+settings:
+  - key: ADMIN_PASSWORD
+    label: Password of the admin account
+    type: password
+    default: generate
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /api/v1/status
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/PhotoPrism/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/photoprism.svg

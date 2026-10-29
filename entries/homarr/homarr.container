@@ -1,0 +1,8 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment=DB_DIALECT=sqlite
+Environment=DB_URL=/appdata/db/db.sqlite
+Environment="SECRET_ENCRYPTION_KEY={{ .Settings.SECRET_ENCRYPTION_KEY }}"
+Volume={{ .Volumes.appdata }}:/appdata:Z

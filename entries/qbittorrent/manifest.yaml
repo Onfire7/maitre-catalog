@@ -1,0 +1,47 @@
+id: qbittorrent
+name: qBittorrent
+summary: Download torrents from a web page, on your own server.
+description: |
+  qBittorrent downloads torrents into the shared Downloads folder, where Sonarr
+  and Radarr pick them up. Sign in as admin; the first password is printed in
+  the Service's logs when it starts for the first time.
+icon: icon.svg
+category: media
+image: ghcr.io/hotio/qbittorrent:release-5.0.4@sha256:47c82280276d24aaab26acbb4ceadf7639b43596ba8f2d7f63c52c27e947029b
+version: 5.0.4
+project: https://github.com/qbittorrent/qBittorrent
+exposure: private
+own_login: true
+web:
+  port: 8080
+  path: /
+volumes:
+  - name: config
+    path: /config
+  - name: downloads
+    path: /downloads
+    shared: true
+settings:
+  - key: PGID
+    label: Run qBittorrent as specified gid.
+    type: text
+    default: '1000'
+  - key: PUID
+    label: Run qBittorrent as specified uid.
+    type: text
+    default: '1000'
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/qBittorrent/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/qbittorrent.svg

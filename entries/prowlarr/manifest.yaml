@@ -1,0 +1,35 @@
+id: prowlarr
+name: Prowlarr
+summary: Manage the indexers Sonarr and Radarr search, in one place.
+description: |
+  Prowlarr keeps your torrent trackers and Usenet indexers in one place and hands them to Sonarr, Radarr and the rest, so you set each up once.
+  The first visit sets up its login.
+icon: icon.svg
+category: media
+image: docker.io/linuxserver/prowlarr:2.5.2@sha256:aaa16ba7d66e413db6d0358d3b6c68d833578ba7f176f24a51807181e7637fce
+version: 2.5.2
+project: https://github.com/Prowlarr/Prowlarr
+exposure: private
+own_login: true
+web:
+  port: 9696
+  path: /
+volumes:
+  - name: config
+    path: /config
+settings:
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /ping
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Prowlarr/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/prowlarr.svg

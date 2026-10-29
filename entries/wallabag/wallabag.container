@@ -1,0 +1,11 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+HealthInterval=1m0s
+HealthTimeout=3s
+Environment="SYMFONY__ENV__DOMAIN_NAME=http://{{ .Name }}.local"
+Environment=SYMFONY__ENV__SERVER_NAME=Wallabag
+Volume={{ .Volumes.data }}:/var/www/wallabag/data:Z
+Volume={{ .Volumes.images }}:/var/www/wallabag/web/assets/images:Z
+HealthCmd=["wget","--no-verbose","--tries=1","--spider","http://localhost/api/info"]

@@ -1,0 +1,10 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment="PGID={{ .Settings.PGID }}"
+Environment="PUID={{ .Settings.PUID }}"
+Environment="TZ={{ .Settings.TZ }}"
+Environment=UMASK=002
+Volume={{ .Volumes.config }}:/config:Z
+Volume={{ .Volumes.downloads }}:/downloads:z
