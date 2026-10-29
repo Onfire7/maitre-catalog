@@ -35,7 +35,7 @@ volumes:                     # named data dirs; placed at <pool>/<service>/<name
 settings:                    # asked at install, available to the template as {{ .Settings.KEY }}
   - key: TZ
     label: Time zone
-    type: timezone           # text | number | password | timezone | bool
+    type: timezone           # text | number | password | timezone | bool | device
     default: auto
   - key: DB_PASSWORD
     label: Database password
@@ -172,3 +172,57 @@ entry:
 Server's weekly CI job does both. A Catalog without the file still loads;
 its entries sort after those with stars. Stars on Codeberg and GitLab are
 counted the same way but tend to be lower than on GitHub.
+
+## Grants
+
+Maître keeps some options from containers unless a Trusted Device allows
+them (decision 189): the Node's own network, devices, capabilities, folders
+of the Node outside its Storage Spaces. An entry that needs one declares
+it, with why, and the Console asks before installing:
+
+```yaml
+grants:
+  - option: Network=host      # as the Node names it; AddDevice=* matches any device
+    why: Finds the devices on your home network by listening for their announcements.
+    optional: discovery       # a feature the person may leave out; omit for a required grant
+    without: Add devices by their address instead.
+```
+
+An optional grant's option goes inside `{{ if .Grants.<feature> }}` in the
+template, so the Service runs without it:
+
+```
+{{ if .Grants.discovery }}Network=host
+{{ else }}Network={{ .Network }}
+{{ end }}
+```
+
+`maitre catalog-check` renders the entry with every feature on and off and
+fails it when an option is not declared, an optional one stays with its
+feature off, a declared one is not used, or Maître does not support the
+option yet; the message says what support it needs. Supported today:
+`Network=host` (single-container entries; the page is served on its own port
+of the Node, and is open to the home network there), GPUs (`AddDevice` of
+`/dev/dri`), `AddCapability`, `Sysctl`, `UserNS`, `NoNewPrivileges=false`,
+and folders of the Node other than the Podman socket and `/run/dbus`.
+
+## Device settings
+
+```yaml
+settings:
+  - key: GPU
+    label: Graphics card for transcoding
+    type: device
+    device: video             # serial | video | any
+```
+
+The Console offers the Node's devices of that kind; empty means none. Use
+it as `{{ with .Settings.GPU }}AddDevice={{ . }}{{ end }}` and declare
+`AddDevice=*`.
+
+## Generated secrets
+
+`default: generate` makes a password at install: 32 letters and digits.
+`format: hex` or `format: base64` with `bytes: 32` makes that many random
+bytes in hex or base64 instead, for apps that want a key of that shape
+(Laravel's `APP_KEY=base64:{{ .Settings.APP_KEY }}`).

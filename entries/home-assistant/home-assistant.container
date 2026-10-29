@@ -1,0 +1,7 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+{{ if .Grants.discovery }}Network=host
+{{ else }}Network={{ .Network }}
+{{ end }}Environment="TZ={{ .Settings.TZ }}"
+Volume={{ .Volumes.config }}:/config:Z
