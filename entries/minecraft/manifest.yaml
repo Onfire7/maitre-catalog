@@ -10,6 +10,7 @@ icon: icon.svg
 category: tools
 image: docker.io/itzg/minecraft-server:2026.10.1-java21@sha256:07ab333a8542208c4c863a78fd3cf3fd1138d5a2e118306e1a316d202f69ab74
 version: "2026.10.1"
+project: https://github.com/itzg/docker-minecraft-server
 exposure: private
 own_login: false
 host_ports:

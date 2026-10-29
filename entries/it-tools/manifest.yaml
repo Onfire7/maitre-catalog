@@ -9,6 +9,7 @@ icon: icon.svg
 category: tools
 image: docker.io/corentinth/it-tools:2023.11.2-7d94e11@sha256:30b032f2175e9c4dc5c795cfa44354ce7fe76d9768caee0f24a9a7371948ac0d
 version: 2023.11.2
+project: https://github.com/CorentinTh/it-tools
 exposure: private
 web:
   port: 80

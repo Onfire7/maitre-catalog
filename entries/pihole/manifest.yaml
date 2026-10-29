@@ -24,6 +24,7 @@ icon: icon.svg
 category: network
 image: docker.io/pihole/pihole:2026.05.0@sha256:70a9c11171ded2eee735d88c127996da209284a329d50f5ae59c06b861d401b3
 version: 2026.5.0
+project: https://github.com/pi-hole/pi-hole
 exposure: private
 host_ports:
   - 53/tcp

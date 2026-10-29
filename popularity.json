@@ -1,0 +1,27 @@
+{
+  "checked": "2026-10-29",
+  "stars": {
+    "actual-budget": 29856,
+    "adguard-home": 37856,
+    "audiobookshelf": 14849,
+    "calibre-web": 18490,
+    "forgejo": 5742,
+    "freshrss": 16445,
+    "immich": 117608,
+    "it-tools": 41057,
+    "jellyfin": 58783,
+    "mealie": 13722,
+    "memos": 64174,
+    "minecraft": 14493,
+    "navidrome": 24429,
+    "nextcloud": 37346,
+    "ntfy": 35161,
+    "paperless-ngx": 47302,
+    "pihole": 61556,
+    "speedtest-tracker": 6043,
+    "stirling-pdf": 95354,
+    "syncthing": 89873,
+    "uptime-kuma": 93062,
+    "vaultwarden": 69891
+  }
+}

@@ -12,6 +12,8 @@ icon: icon.svg               # a file beside the manifest, copied from an icon p
 category: media              # media | home | network | tools | infrastructure
 image: docker.io/jellyfin/jellyfin:10.10.7@sha256:...   # tag for humans, digest for machines
 version: "10.10.7"
+project: https://github.com/jellyfin/jellyfin   # the app's own repository (GitHub, Codeberg
+                             # or GitLab); its stars are the entry's popularity
 exposure: remote             # default exposure level: private | remote
 own_login: false             # true if the app has its own accounts (changes Console wording)
 infrastructure: false        # DHCP/DNS style: reserved address, early start
@@ -152,3 +154,21 @@ An entry is known to work when CI has:
 fields. The agent supplies `.Image`, `.Name`, `.Volumes` (name → host path),
 `.Settings`, `.Network` and `.Env`. Entries should keep the template short
 and let the agent add `[Service]`/`[Install]` sections.
+
+## Popularity
+
+The Catalog page sorts by popularity: the stars of each entry's `project`,
+the repository the app is developed in (not one that only packages it, such
+as linuxserver's `docker-*`). The counts live in `popularity.json` beside
+`entries/`, not in the manifests, so a weekly refresh does not change every
+entry:
+
+```json
+{"checked": "2026-10-29", "stars": {"jellyfin": 58783}}
+```
+
+`maitre catalog popularity --write entries` refreshes it, and
+`maitre catalog-index` adds each entry's `stars` to the index. Maître
+Server's weekly CI job does both. A Catalog without the file still loads;
+its entries sort after those with stars. Stars on Codeberg and GitLab are
+counted the same way but tend to be lower than on GitHub.

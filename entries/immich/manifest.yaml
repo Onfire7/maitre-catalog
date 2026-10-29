@@ -8,6 +8,7 @@ description: |
 icon: icon.svg
 category: media
 version: "3.3.5"
+project: https://github.com/immich-app/immich
 exposure: remote
 own_login: true
 # Four containers, as Immich's own docker-compose.yml for v3.3.5 has them.

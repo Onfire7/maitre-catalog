@@ -15,6 +15,7 @@ entries/<id>/<name>.volume   the bundle's own volumes, if it has any
 entries/<id>/icon.svg        copied from an icon pack; see FORMAT.md
 entries/<id>/compose.yaml    a converted entry's source, as it came
 entries/<id>/CONVERSION.md   what its conversion and later hand edits changed
+popularity.json              each entry's project stars, the Catalog page's sort; see FORMAT.md
 NOTICE                       generated: what the Catalog carries of other projects
 LICENSES/                    those projects' licence texts
 index.json                   generated: `maitre catalog-index entries > index.json`

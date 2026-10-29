@@ -10,6 +10,7 @@ icon: icon.svg
 category: tools
 image: docker.io/binwiederhier/ntfy:v2.34.0@sha256:901e14503d3f605f445be0e68f2ac71f0aa73391897ce6ceb599f8c48d8b3792
 version: 2.34.0
+project: https://github.com/binwiederhier/ntfy
 exposure: remote
 own_login: false
 web:

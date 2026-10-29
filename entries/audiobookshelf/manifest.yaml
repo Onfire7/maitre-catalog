@@ -9,6 +9,7 @@ icon: icon.svg
 category: media
 image: ghcr.io/advplyr/audiobookshelf:2.35.0@sha256:89276ff2e0b3d2f07dd334b641f27a34ab7f02e1047c60b7b8a30126cb0813a5
 version: 2.35.0
+project: https://github.com/advplyr/audiobookshelf
 exposure: remote
 own_login: true
 web:

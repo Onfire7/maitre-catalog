@@ -9,6 +9,7 @@ icon: icon.svg
 category: tools
 image: codeberg.org/forgejo/forgejo:17.0.1@sha256:fcd19ff4ebc85fb098a67e8e1d0d5a84d07dd6e8a23edcfdfd5b71a6178953be
 version: 17.0.1
+project: https://codeberg.org/forgejo/forgejo
 exposure: private
 own_login: true
 host_ports:

@@ -11,6 +11,7 @@ icon: icon.svg
 category: tools
 image: docker.io/library/nextcloud:33.0.3@sha256:92da6b0a45c52903fc4a4eed2e7274fd89ff3ef05f501299d9df810c804cc59b
 version: 33.0.3
+project: https://github.com/nextcloud/server
 exposure: private
 web:
   port: 80

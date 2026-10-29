@@ -9,6 +9,7 @@ icon: icon.png
 category: network
 image: docker.io/linuxserver/speedtest-tracker:1.15.1@sha256:8d3c2826b708c18be7fb46c1afebc6bb3b1ab7c519473df1be89f5ecaa8bb31f
 version: 1.15.1
+project: https://github.com/alexjustesen/speedtest-tracker
 exposure: private
 own_login: true
 web:

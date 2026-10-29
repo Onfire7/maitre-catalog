@@ -8,6 +8,7 @@ icon: icon.svg
 category: tools
 image: docker.io/neosmemo/memos:0.28.0@sha256:06066de94333c091ee67c2ad5dec5f15bf5f35b31498c90092f9915dd05e9f92
 version: 0.28.0
+project: https://github.com/usememos/memos
 exposure: private
 own_login: true
 web:
