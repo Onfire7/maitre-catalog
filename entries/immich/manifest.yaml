@@ -1,0 +1,51 @@
+id: immich
+name: Immich
+summary: Back up and browse your photos and videos, with search by faces and things.
+description: |
+  Immich keeps your photos and videos on your own Nodes. The phone apps back
+  them up as you take them; the web page browses them by date, place, people
+  and what is in them, found by its own machine learning.
+icon: https://raw.githubusercontent.com/immich-app/immich/main/design/immich-logo.svg
+category: media
+version: "3.3.5"
+exposure: remote
+own_login: true
+# Four containers, as Immich's own docker-compose.yml for v3.3.5 has them.
+# The server starts after Valkey and Postgres, as its depends_on says; it
+# retries until they answer, so it does not wait for their health.
+components:
+  - name: server
+    image: ghcr.io/immich-app/immich-server:v3.3.5@sha256:485d546a2e31d6a8b4db8423fcba5c109de8c218d93410af115fd1ccfc4352a6
+    after: [redis, database]
+  - name: machine-learning
+    image: ghcr.io/immich-app/immich-machine-learning:v3.3.5@sha256:5b28c9352c8374b8a1ed96fbdd8d6755fea6e43510ec43fdf6538aa02ea40f56
+  - name: redis
+    image: docker.io/valkey/valkey:9@sha256:c123e3715db63d06d4ad6964884037aa0d5d4d703939b9929954112889708e1d
+  - name: database
+    image: ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0@sha256:bcf63357191b76a916ae5eb93464d65c07511da41e3bf7a8416db519b40b1c23
+web:
+  component: server
+  port: 2283
+  path: /
+volumes:
+  - name: library
+    path: /data
+    size: large
+  - name: database
+    path: /var/lib/postgresql/data
+    size: medium
+settings:
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+  - key: DB_PASSWORD
+    label: Database password
+    type: password
+    default: generate
+health:
+  http: /api/server/ping
+source:
+  from: hand
+  url: https://github.com/immich-app/immich/releases/download/v3.3.5/docker-compose.yml
+  licence: AGPL-3.0

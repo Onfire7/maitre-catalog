@@ -1,0 +1,4 @@
+[Container]
+Image={{ .Image }}
+Environment=TZ={{ .Settings.TZ }}
+Volume=model-cache.volume:/cache

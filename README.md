@@ -10,6 +10,8 @@ git submodule and bakes the generated index into its image.
 ```
 entries/<id>/manifest.yaml   what the Console shows and asks; see FORMAT.md
 entries/<id>/<id>.container  Podman Quadlet template the agent renders
+entries/<id>/<name>.container  one per component, in an entry of several
+entries/<id>/<name>.volume   the bundle's own volumes, if it has any
 index.json                   generated: `maitre catalog-index entries > index.json`
 ```
 
