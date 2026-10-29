@@ -22,6 +22,10 @@ index.json                   generated: `maitre catalog-index entries > index.js
 
 Images are pinned by digest in the manifest. Updating an entry means
 changing the digest; the agent's Service auto-update follows the index.
+`maitre catalog outdated entries` lists the images with a newer tag in their
+series or rebuilt under the same tag, and `--write` repins them. Maître
+Server's CI runs it every week and opens a pull request here with the new
+pins, and one there that boots them.
 
 ## Your own Catalog
 
