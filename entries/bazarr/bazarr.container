@@ -1,0 +1,10 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment=PGID=1000
+Environment=PUID=1000
+Environment="TZ={{ .Settings.TZ }}"
+Volume={{ .Volumes.movies }}:/movies:z
+Volume={{ .Volumes.tv_shows }}:/tv:z
+Volume={{ .Volumes.config }}:/config:Z

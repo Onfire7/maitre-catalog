@@ -1,0 +1,31 @@
+id: node-red
+name: Node-RED
+summary: Wire devices, services and APIs together into automations, in the browser.
+description: |
+  Node-RED builds automations by connecting nodes in a flow: MQTT messages,
+  Home Assistant events, web requests, timers and hundreds more. Its editor has
+  no login until you set one in its settings file.
+icon: icon.svg
+category: home
+image: docker.io/nodered/node-red:4.1.10@sha256:eaa2fa23f751581162a4ff9eebb28fcbfcca7935b1a839f63672718f3c816761
+version: 4.1.10
+project: https://github.com/node-red/node-red
+exposure: private
+own_login: false
+web:
+  port: 1880
+  path: /
+volumes:
+  - name: data
+    path: /data
+health:
+  http: /
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Node-RED/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/node-red.svg

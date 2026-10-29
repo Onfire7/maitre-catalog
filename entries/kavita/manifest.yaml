@@ -1,0 +1,39 @@
+id: kavita
+name: Kavita
+summary: Read your comics, manga and ebooks in the browser, with your place kept.
+description: |
+  Kavita serves your comics, manga and ebooks from a shared folder, with a
+  reader in the browser and OPDS for reading apps. The first visit creates its
+  admin account.
+icon: icon.svg
+category: media
+image: docker.io/jvmilazz0/kavita:0.9.0.2@sha256:ca6af7a18d7124d014702983c2364e485294f808c1552e9555f2595b7cda7982
+version: 0.9.0.2
+project: https://github.com/Kareadita/Kavita
+exposure: private
+own_login: true
+web:
+  port: 5000
+  path: /
+volumes:
+  - name: config
+    path: /kavita/config
+  - name: manga
+    path: /manga
+    shared: true
+settings:
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /api/health
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Kavita/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/kavita.svg

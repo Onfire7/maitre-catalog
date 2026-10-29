@@ -1,0 +1,36 @@
+id: gotify
+name: Gotify
+summary: Send push notifications to your phone from your own server.
+description: |
+  Gotify receives messages from scripts and apps over a simple REST API and
+  pushes them to its Android app and the browser. Sign in as admin with the
+  password made up at install.
+icon: icon.svg
+category: tools
+image: docker.io/gotify/server:3.1.1@sha256:44fc5bbd1c0618878e33073d38c2c13126b48f245c3fe12236b1da48eb203b86
+version: 3.1.1
+project: https://github.com/gotify/server
+exposure: remote
+own_login: true
+web:
+  port: 80
+  path: /
+volumes:
+  - name: data
+    path: /app/data
+settings:
+  - key: ADMIN_PASSWORD
+    label: Password of the admin account
+    type: password
+    default: generate
+health:
+  http: /health
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/05e3501e90017f2eb74d29f5d5bef13c3615a0af/Apps/gotify/docker-compose.yml
+  licence: MIT
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/gotify.svg

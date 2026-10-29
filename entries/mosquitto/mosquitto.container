@@ -1,0 +1,9 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Exec=mosquitto -c /mosquitto-no-auth.conf
+Volume={{ .Volumes.config }}:/mosquitto/config:Z
+Volume={{ .Volumes.data }}:/mosquitto/data:Z
+Volume={{ .Volumes.log }}:/mosquitto/log:Z
+PublishPort=1883:1883/tcp

@@ -1,0 +1,9 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+{{ if .Grants.discovery }}Network=host
+Environment=ESPHOME_DASHBOARD_USE_PING=false
+{{ else }}Network={{ .Network }}
+Environment=ESPHOME_DASHBOARD_USE_PING=true
+{{ end }}Environment="TZ={{ .Settings.TZ }}"
+Volume={{ .Volumes.config }}:/config:Z

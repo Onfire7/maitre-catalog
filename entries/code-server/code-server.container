@@ -1,0 +1,12 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment=DEFAULT_WORKSPACE=/config/workspace
+Environment="PASSWORD={{ .Settings.PASSWORD }}"
+Environment=PGID=1000
+Environment=PUID=1000
+Environment="SUDO_PASSWORD={{ .Settings.SUDO_PASSWORD }}"
+Environment="TZ={{ .Settings.TZ }}"
+Volume={{ .Volumes.config }}:/config:Z
+Volume={{ .Volumes.projects }}:/projects:Z

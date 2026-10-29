@@ -1,0 +1,33 @@
+id: mosquitto
+name: Mosquitto
+summary: An MQTT broker, the message hub Home Assistant, Zigbee2MQTT and smart devices talk through.
+description: |
+  Mosquitto passes MQTT messages between the devices and apps of your home:
+  sensors publish, Home Assistant and Node-RED subscribe. Devices on your home
+  network reach it at the Node's address, port 1883. It runs without passwords,
+  so anything on your home network can publish and subscribe.
+icon: icon.svg
+category: home
+image: docker.io/library/eclipse-mosquitto:2@sha256:860aeb5d63ce509508f6dcfb2bc8a1c1dd2bc60555b562b45ce90e52d8dabb0f
+version: '2'
+project: https://github.com/eclipse-mosquitto/mosquitto
+exposure: private
+own_login: false
+host_ports:
+  - 1883/tcp
+volumes:
+  - name: config
+    path: /mosquitto/config
+  - name: data
+    path: /mosquitto/data
+  - name: log
+    path: /mosquitto/log
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/05e3501e90017f2eb74d29f5d5bef13c3615a0af/Apps/mosquitto/docker-compose.yml
+  licence: MIT
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/mosquitto.svg

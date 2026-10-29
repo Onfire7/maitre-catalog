@@ -1,0 +1,7 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment="TZ={{ .Settings.TZ }}"
+Volume={{ .Volumes.config }}:/kavita/config:Z
+Volume={{ .Volumes.manga }}:/manga:z

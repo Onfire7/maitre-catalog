@@ -1,0 +1,41 @@
+id: lidarr
+name: Lidarr
+summary: Follow your favourite artists and fetch their new albums.
+description: |
+  Lidarr watches for new releases from the artists you follow, sends them to your download client and files them in your music folder, named and tagged.
+  The first visit sets up its login.
+icon: icon.svg
+category: media
+image: docker.io/linuxserver/lidarr:3.1.0@sha256:d8549ff9ea29b4015c32257360652c1000c31ea471a2b3f0835ae77292faf35b
+version: 3.1.0
+project: https://github.com/Lidarr/Lidarr
+exposure: private
+own_login: true
+web:
+  port: 8686
+  path: /
+volumes:
+  - name: config
+    path: /config
+  - name: downloads
+    path: /downloads
+    shared: true
+  - name: music
+    path: /music
+    shared: true
+settings:
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /ping
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Lidarr/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/lidarr.svg

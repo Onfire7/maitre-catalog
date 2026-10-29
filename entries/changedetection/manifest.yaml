@@ -1,0 +1,44 @@
+id: changedetection
+name: Changedetection.io
+summary: 'Watch web pages and get told when they change: prices, stock, news.'
+description: |
+  Changedetection.io checks the pages you give it on a schedule and tells you
+  what changed, by email, ntfy, Gotify and many more. It has no password until
+  you set one in its settings.
+icon: icon.svg
+category: tools
+image: docker.io/linuxserver/changedetection.io:0.60.9@sha256:902d7df0205f5c92b6f18b3f56a99e24d451ec5803cd2b231bb292b77e074424
+version: 0.60.9
+project: https://github.com/dgtlmoon/changedetection.io
+exposure: private
+own_login: false
+web:
+  port: 5000
+  path: /
+volumes:
+  - name: config
+    path: /config
+settings:
+  - key: PGID
+    label: 'Container Variable: PGID'
+    type: text
+    default: '1000'
+  - key: PUID
+    label: 'Container Variable: PUID'
+    type: text
+    default: '1000'
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/05e3501e90017f2eb74d29f5d5bef13c3615a0af/Apps/changedetection-io/docker-compose.yml
+  licence: MIT
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/changedetection.svg

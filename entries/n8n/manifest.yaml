@@ -1,0 +1,36 @@
+id: n8n
+name: n8n
+summary: Automate work across your apps and services, with workflows built in the browser.
+description: |
+  n8n connects apps and services in workflows: when something happens in one,
+  do something in others, with hundreds of integrations and code where you need
+  it. The first visit creates its owner account.
+icon: icon.svg
+category: tools
+image: docker.io/n8nio/n8n:2.22.3@sha256:75d18a9ecc588c32ece70d87bfd3319004601cf1d0d4fea5f4ba3640acb87f7b
+version: 2.22.3
+project: https://github.com/n8n-io/n8n
+exposure: private
+own_login: true
+web:
+  port: 5678
+  path: /
+volumes:
+  - name: n8n
+    path: /home/node/.n8n
+settings:
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /healthz
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/N8n/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/n8n.svg

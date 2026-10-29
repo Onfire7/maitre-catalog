@@ -1,0 +1,10 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment=BASE_URL=
+Environment="PGID={{ .Settings.PGID }}"
+Environment=PLAYWRIGHT_DRIVER_URL=
+Environment="PUID={{ .Settings.PUID }}"
+Environment="TZ={{ .Settings.TZ }}"
+Volume={{ .Volumes.config }}:/config:Z

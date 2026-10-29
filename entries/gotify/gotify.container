@@ -1,0 +1,7 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment=GOTIFY_DEFAULTUSER_NAME=admin
+Environment="GOTIFY_DEFAULTUSER_PASS={{ .Settings.ADMIN_PASSWORD }}"
+Volume={{ .Volumes.data }}:/app/data:Z
