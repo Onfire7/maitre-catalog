@@ -8,7 +8,7 @@ name: Jellyfin
 summary: one line shown in lists
 description: |
   longer text shown on the entry page
-icon: https://.../icon.svg
+icon: icon.svg               # a file beside the manifest, copied from an icon pack
 category: media              # media | home | network | tools | infrastructure
 image: docker.io/jellyfin/jellyfin:10.10.7@sha256:...   # tag for humans, digest for machines
 version: "10.10.7"
@@ -86,6 +86,54 @@ a Compose file's named volumes. The agent writes them as
 `<service>-<name>.volume`, and a container's `Volume=`, `Mount=` and
 `Network=` references to them follow. Every `.container` file must be a
 component's template.
+
+## Icons
+
+An entry's icon is copied into its folder, never linked, so the Console
+needs no other server to show it:
+
+```
+maitre catalog icon entries/<id> [name in the packs]
+```
+
+copies `icon.svg` (or `icon.png`) from homarr-labs/dashboard-icons
+(Apache-2.0), or else selfh.st/icons (CC BY 4.0), at the commit each pack is
+at, and records it:
+
+```yaml
+icon: icon.svg
+source:
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/<commit>/svg/<name>.svg
+```
+
+`maitre catalog add` does the same for the entry it writes. `catalog-index`
+puts the icon in the index as a data URI; `catalog-notice` lists it in
+`NOTICE`, which `make gen` keeps current.
+
+## Converting a Compose file
+
+```
+maitre catalog add [--id id] [--url url] [--licence spdx] <catalog folder> <compose file or CasaOS app folder>
+```
+
+writes `entries/<id>/` from a Compose file: a template per service, its
+images pinned by digest, its `${VAR}`s used in `environment:` as settings
+(passwords made up at install), its folders and named volumes as Service
+volumes, and `depends_on` as `after:` and `wait_healthy:`. Beside them go the
+file as it came (`compose.yaml`) and `CONVERSION.md`, the report: what must
+be fixed before anything is written, what a person must decide, and what was
+changed. What a person must decide is also listed in the manifest:
+
+```yaml
+unfinished:
+  - The web page is taken to be server's port 9000, of 2 published ports; confirm web.component and web.port
+```
+
+An entry with `unfinished:` is not installed by the Console and fails
+`catalog-check`; remove the list once each item is settled.
 
 ## Checks
 

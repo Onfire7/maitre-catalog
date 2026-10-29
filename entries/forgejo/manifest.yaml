@@ -1,0 +1,33 @@
+id: forgejo
+name: Forgejo
+summary: Host your own Git repositories, with issues, pull requests and CI.
+description: |
+  Forgejo is a community-run Git forge. Keep your code and its history on your
+  own Nodes, review changes in pull requests, track issues, and push over
+  HTTPS or SSH (port 2222 on the Node).
+icon: icon.svg
+category: tools
+image: codeberg.org/forgejo/forgejo:17.0.1@sha256:fcd19ff4ebc85fb098a67e8e1d0d5a84d07dd6e8a23edcfdfd5b71a6178953be
+version: 17.0.1
+exposure: private
+own_login: true
+host_ports:
+  - 2222/tcp
+web:
+  port: 3000
+  path: /
+volumes:
+  - name: data
+    path: /data
+settings:
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+source:
+  from: hand
+  url: https://forgejo.org/docs/latest/admin/installation/docker/
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/forgejo.svg

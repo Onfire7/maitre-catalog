@@ -1,0 +1,30 @@
+id: nextcloud
+name: Nextcloud
+summary: Content collaboration platform
+description: |-
+  Discover the ultimate solution for remote collaboration with Nextcloud. Unlike traditional office software, Nextcloud seamlessly integrates files, communication, and productivity tools into one platform, enhancing teamwork and streamlining your workflow. Say goodbye to the limitations of conventional tools and embrace a new era of collaboration.
+
+  Nextcloud stands out with its robust features tailored for every need. Enjoy secure file storage, real-time communication via Talk, comprehensive groupware, and powerful office integration, all in one place. Experience these top-notch features at an affordable price, making it accessible for everyone to elevate their collaboration game.
+
+  Deploying Nextcloud on a Zima private cloud device brings unparalleled convenience. Benefit from unlimited storage, secure data privacy, local network speeds, and multi-device access, ensuring you have everything you need at your fingertips.
+icon: icon.svg
+category: tools
+image: docker.io/library/nextcloud:33.0.3@sha256:92da6b0a45c52903fc4a4eed2e7274fd89ff3ef05f501299d9df810c804cc59b
+version: 33.0.3
+exposure: private
+web:
+  port: 80
+  path: /
+volumes:
+  - name: html
+    path: /var/www/html
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Nextcloud/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/nextcloud.svg
+own_login: true

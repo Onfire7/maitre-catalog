@@ -5,7 +5,7 @@ description: |
   Immich keeps your photos and videos on your own Nodes. The phone apps back
   them up as you take them; the web page browses them by date, place, people
   and what is in them, found by its own machine learning.
-icon: https://raw.githubusercontent.com/immich-app/immich/main/design/immich-logo.svg
+icon: icon.svg
 category: media
 version: "3.3.5"
 exposure: remote
@@ -49,3 +49,7 @@ source:
   from: hand
   url: https://github.com/immich-app/immich/releases/download/v3.3.5/docker-compose.yml
   licence: AGPL-3.0
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/immich.svg

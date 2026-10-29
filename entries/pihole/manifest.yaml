@@ -1,0 +1,56 @@
+id: pihole
+name: Pi-hole
+summary: Network-wide Ad Blocking
+description: |-
+  Pi-hole is a network-wide ad-blocking platform for Linux hardware, using DNS sinkhole technology to protect devices from unwanted content without requiring client-side software. Designed for home or enterprise networks, it offers efficient ad blocking and network optimization.
+
+  Core features include network-wide ad blocking and content blocking in non-browser environments. It uses DNS sinkhole to block ads, covering mobile apps and smart TVs. Caching DNS queries speeds up everyday browsing. A command-line interface ensures interoperability with reliable control options.
+
+  It provides an intuitive web interface dashboard for viewing and managing system status. An optional DHCP server function automatically protects all devices. Capable of handling high query volumes on server-grade hardware, it supports ad blocking over IPv4 and IPv6. With efficiency and versatility at the core, the platform delivers a modern network protection solution.
+
+  **Key Features:**
+  - Network-wide ad blocking via DNS sinkhole technology
+  - Blocking content in non-browser environments, including mobile apps and smart TVs
+  - Caching DNS queries to speed up browsing
+  - Command-line interface for interoperability
+  - Intuitive web interface dashboard for system viewing and control
+  - Optional DHCP server function for automatic device protection
+  - Ad blocking support for IPv4 and IPv6
+
+  **Learn More:**
+  - [Pi-hole Official Website](https://pi-hole.net/)
+  - [Pi-hole GitHub](https://github.com/pi-hole/pi-hole)
+icon: icon.svg
+category: network
+image: docker.io/pihole/pihole:2026.05.0@sha256:70a9c11171ded2eee735d88c127996da209284a329d50f5ae59c06b861d401b3
+version: 2026.5.0
+exposure: private
+host_ports:
+  - 53/tcp
+  - 53/udp
+web:
+  port: 80
+  path: /admin
+volumes:
+  - name: pihole
+    path: /etc/pihole
+settings:
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+  - key: WEB_PASSWORD
+    label: Web interface password
+    type: password
+    default: generate
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Pihole/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/pi-hole.svg
+infrastructure: true
+own_login: true

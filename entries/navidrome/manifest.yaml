@@ -1,0 +1,33 @@
+id: navidrome
+name: Navidrome
+summary: Music Collection and Streaming Server
+description: Navidrome is an open source web-based music collection server and streamer. It gives you freedom to listen to your music collection from any browser or mobile device. It's like your personal Spotify!
+icon: icon.svg
+category: media
+image: docker.io/deluan/navidrome:0.61.2@sha256:9fa40b3d8dec43ceb2213d1fa551da3dcfef6ac6d19c2e534efb92527c2bafd2
+version: 0.61.2
+exposure: remote
+web:
+  port: 4533
+  path: /
+volumes:
+  - name: data
+    path: /data
+  - name: music
+    path: /music
+    shared: true
+settings:
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Navidrome/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/navidrome.svg
+own_login: true

@@ -1,0 +1,11 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment=ND_BASEURL=
+Environment=ND_LOGLEVEL=info
+Environment=ND_SCANSCHEDULE=1h
+Environment=ND_SESSIONTIMEOUT=24h
+Environment="TZ={{ .Settings.TZ }}"
+Volume={{ .Volumes.data }}:/data:Z
+Volume={{ .Volumes.music }}:/music:z

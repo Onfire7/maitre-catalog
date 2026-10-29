@@ -1,0 +1,56 @@
+id: syncthing
+name: Syncthing
+summary: Open decentralized file synchronization
+description: |-
+  # Unlocking the True Potential of Data Backup
+
+  Say goodbye to traditional cloud backup limitations and embrace the future with Syncthing. Unlike conventional cloud services that often come with privacy concerns and storage restrictions, Syncthing provides a secure, real-time file synchronization solution that keeps your data exclusively in your hands. Whether you're syncing work documents or personal photos, you have complete control over where and how your files are stored and shared.
+
+  # Features That Make a Difference
+
+  Syncthing offers a seamless, user-friendly experience with powerful features designed for everyday users. Enjoy continuous file synchronization between multiple devices without any subscription fees. Experience peace of mind knowing that your data is encrypted and protected from unauthorized access. Syncthing’s open-source nature means no hidden costs, providing a truly transparent and cost-effective solution for your file management needs.
+
+  # The Power of Syncthing on Zima
+
+  Deploying Syncthing on Zima private cloud devices unlocks unparalleled convenience: enjoy unlimited storage capacity, ensure the privacy of your data, and benefit from blazing local network speeds. Transform your data management and synchronization with the perfect combination of Syncthing’s capabilities and Zima’s powerful infrastructure.
+icon: icon.svg
+category: tools
+image: docker.io/linuxserver/syncthing:1.29.7@sha256:2600853512ea2744d88b05fba7524d4bc6d99e14975d408a7f53beee0a2b83e1
+version: 1.29.7
+exposure: private
+host_ports:
+  - 22000/tcp
+  - 22000/udp
+  - 21027/udp
+web:
+  port: 8384
+  path: /
+volumes:
+  - name: config
+    path: /config
+  - name: sync
+    path: /sync
+    size: large
+    shared: true
+settings:
+  - key: PGID
+    label: Run Syncthing as specified gid.
+    type: text
+    default: '1000'
+  - key: PUID
+    label: Run Syncthing as specified uid.
+    type: text
+    default: '1000'
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Syncthing/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/syncthing.svg

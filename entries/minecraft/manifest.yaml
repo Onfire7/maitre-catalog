@@ -6,7 +6,7 @@ description: |
   on your network can join at this Node's address. Turn on "Reachable from
   the internet" in the Console to let friends elsewhere join too; the Node
   asks your router to forward the game port for you.
-icon: https://raw.githubusercontent.com/itzg/docker-minecraft-server/master/docs/img/minecraft-server-logo.png
+icon: icon.svg
 category: tools
 image: docker.io/itzg/minecraft-server:2026.10.1-java21@sha256:07ab333a8542208c4c863a78fd3cf3fd1138d5a2e118306e1a316d202f69ab74
 version: "2026.10.1"
@@ -40,3 +40,9 @@ settings:
     label: Time zone
     type: timezone
     default: auto
+source:
+  from: hand
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/minecraft.svg

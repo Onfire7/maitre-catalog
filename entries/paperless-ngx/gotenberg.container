@@ -1,0 +1,3 @@
+[Container]
+Image={{ .Image }}
+Exec='gotenberg' '--chromium-disable-javascript=true' '--chromium-allow-list=file:///tmp/.*'

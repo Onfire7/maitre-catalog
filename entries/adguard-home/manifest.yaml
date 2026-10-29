@@ -5,7 +5,7 @@ description: |
   A network-wide ad and tracker blocker that works as your home DNS server.
   Because other devices depend on it, this Node keeps a fixed address and
   starts AdGuard Home before anything else.
-icon: https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/build/static/icons/icon-192.png
+icon: icon.svg
 category: network
 image: docker.io/adguard/adguardhome:v0.107.59@sha256:5d5e3aef39a8c8906a324f0c2da0a6123929e459b57c1e3f05e401dca5c7bf02
 version: "0.107.59"
@@ -25,3 +25,9 @@ volumes:
     path: /opt/adguardhome/conf
 health:
   http: /
+source:
+  from: hand
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/adguard-home.svg

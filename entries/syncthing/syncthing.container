@@ -1,0 +1,12 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment="PGID={{ .Settings.PGID }}"
+Environment="PUID={{ .Settings.PUID }}"
+Environment="TZ={{ .Settings.TZ }}"
+Volume={{ .Volumes.config }}:/config:Z
+Volume={{ .Volumes.sync }}:/sync:z
+PublishPort=22000:22000
+PublishPort=22000:22000/udp
+PublishPort=21027:21027/udp

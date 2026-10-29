@@ -4,7 +4,7 @@ summary: Know when your websites and services go down.
 description: |
   A self-hosted monitoring tool with a friendly dashboard. Add the things you
   care about and get notified when they stop responding.
-icon: https://raw.githubusercontent.com/louislam/uptime-kuma/master/public/icon.svg
+icon: icon.svg
 category: tools
 image: docker.io/louislam/uptime-kuma:1.23.16@sha256:431fee3be822b04861cf0e35daf4beef6b7cb37391c5f26c3ad6e12ce280fe18
 version: "1.23.16"
@@ -18,3 +18,9 @@ volumes:
     path: /app/data
 health:
   http: /
+source:
+  from: hand
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/uptime-kuma.svg

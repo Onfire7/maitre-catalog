@@ -1,0 +1,9 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment=USER_GID=1000
+Environment=USER_UID=1000
+Environment=TZ={{ .Settings.TZ }}
+Volume={{ .Volumes.data }}:/data:Z
+PublishPort=2222:22

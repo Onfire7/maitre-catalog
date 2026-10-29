@@ -1,0 +1,5 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Volume={{ .Volumes.html }}:/var/www/html:Z

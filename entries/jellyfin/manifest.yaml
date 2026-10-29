@@ -4,7 +4,7 @@ summary: Stream your movies, shows and music to any device.
 description: |
   Jellyfin is a free media system. Point it at your films, series, music and
   photos and watch them from your TV, phone or browser.
-icon: https://raw.githubusercontent.com/jellyfin/jellyfin-ux/master/branding/SVG/icon-transparent.svg
+icon: icon.svg
 category: media
 image: docker.io/jellyfin/jellyfin:10.10.7@sha256:7ae36aab93ef9b6aaff02b37f8bb23df84bb2d7a3f6054ec8fc466072a648ce2
 version: "10.10.7"
@@ -29,3 +29,9 @@ settings:
     default: auto
 health:
   http: /health
+source:
+  from: hand
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/jellyfin.svg

@@ -1,0 +1,6 @@
+[Container]
+Image={{ .Image }}
+Environment=POSTGRES_DB=paperless
+Environment="POSTGRES_PASSWORD={{ .Settings.PAPERLESS_DBPASS }}"
+Environment=POSTGRES_USER=paperless
+Volume={{ .Volumes.postgres }}:/var/lib/postgresql/data:Z

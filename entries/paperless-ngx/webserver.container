@@ -1,0 +1,18 @@
+[Container]
+Image={{ .Image }}
+Environment="PAPERLESS_ADMIN_PASSWORD={{ .Settings.PAPERLESS_ADMIN_PASSWORD }}"
+Environment="PAPERLESS_ADMIN_USER={{ .Settings.PAPERLESS_ADMIN_USER }}"
+Environment=PAPERLESS_DBENGINE=postgresql
+Environment=PAPERLESS_DBHOST=db
+Environment="PAPERLESS_DBPASS={{ .Settings.PAPERLESS_DBPASS }}"
+Environment=PAPERLESS_DBUSER=paperless
+Environment=PAPERLESS_REDIS=redis://broker:6379
+Environment="PAPERLESS_SECRET_KEY={{ .Settings.PAPERLESS_SECRET_KEY }}"
+Environment=PAPERLESS_TIKA_ENABLED=true
+Environment=PAPERLESS_TIKA_ENDPOINT=http://tika:9998
+Environment=PAPERLESS_TIKA_GOTENBERG_ENDPOINT=http://gotenberg:3000
+Volume={{ .Volumes.data }}:/usr/src/paperless/data:Z
+Volume={{ .Volumes.media }}:/usr/src/paperless/media:Z
+Volume={{ .Volumes.export }}:/usr/src/paperless/export:Z
+Volume={{ .Volumes.consume }}:/usr/src/paperless/consume:Z
+Environment="PAPERLESS_TIME_ZONE={{ .Settings.TZ }}"

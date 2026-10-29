@@ -1,0 +1,70 @@
+id: paperless-ngx
+name: Paperless-ngx
+summary: Scan, index and archive your paper documents, and find them again.
+description: Paperless-ngx is a community-supported open-source document management system that transforms your physical documents into a searchable online archive so you can keep, well, less paper.
+icon: icon.svg
+category: tools
+version: 3.2.0
+exposure: private
+web:
+  port: 8000
+  path: /
+  component: webserver
+volumes:
+  - name: consume
+    path: /usr/src/paperless/consume
+  - name: data
+    path: /usr/src/paperless/data
+  - name: export
+    path: /usr/src/paperless/export
+  - name: media
+    path: /usr/src/paperless/media
+  - name: postgres
+    path: /var/lib/postgresql/data
+  - name: redis
+    path: /data
+settings:
+  - key: PAPERLESS_ADMIN_USER
+    label: Administrator name
+    type: text
+    default: admin
+  - key: PAPERLESS_ADMIN_PASSWORD
+    label: Administrator password
+    type: password
+    default: generate
+  - key: PAPERLESS_DBPASS
+    label: Database password
+    type: password
+    default: generate
+  - key: PAPERLESS_SECRET_KEY
+    label: Secret key
+    type: password
+    default: generate
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+components:
+  - name: webserver
+    image: ghcr.io/paperless-ngx/paperless-ngx:3.2.0@sha256:22dc423ff48ac1629977dbf0c9625ba9f60d3bd1291a2ff173c65351984a14c2
+    after:
+      - broker
+      - db
+  - name: broker
+    image: docker.io/library/redis:8.10.2@sha256:97ec88159e6d7cfb5ddef9015386087d58a912de80112f06ebdfa78fa5989901
+  - name: db
+    image: docker.io/library/postgres:16@sha256:be01cf82fc7dbba824acf0a82e150b4b360f3ff93c6631d7844af431e841a95c
+  - name: gotenberg
+    image: docker.io/gotenberg/gotenberg:8.38@sha256:aa552cc115db488e0f0bcb07446aac13071ad51505b642c84bb894500907b42b
+  - name: tika
+    image: docker.io/apache/tika:3.3.3.0@sha256:326b238b37904c94ff61fed87afe0af72e6a29fa715933b10af97b7d56f1d4cb
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/38d1be50898ddb9f609c6bfcc26347dd41310378/Apps/paperless-ngx/docker-compose.yml
+  licence: MIT
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/paperless-ngx.svg
+own_login: true
