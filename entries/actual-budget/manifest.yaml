@@ -1,0 +1,31 @@
+id: actual-budget
+name: Actual Budget
+summary: Budget by envelopes, with your accounts kept on your own server.
+description: |
+  Actual Budget is a personal finance app built around envelope budgeting: the
+  money you earn is each given a job. It syncs between your devices through
+  this server and can import from YNAB, QIF, OFX and CSV files. The first visit
+  sets the server's password.
+icon: icon.svg
+category: tools
+image: docker.io/actualbudget/actual-server:26.5.2@sha256:1aeeb3985db55556e716dec25e08f6ce09308c2571b65cddbc6746ee6d5e0d45
+version: 26.5.2
+exposure: private
+own_login: true
+web:
+  port: 5006
+  path: /
+volumes:
+  - name: data
+    path: /data
+health:
+  http: /health
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/ActualBudget/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/actual-budget.svg

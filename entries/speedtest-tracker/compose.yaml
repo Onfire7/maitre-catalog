@@ -1,0 +1,150 @@
+# Configuration for speedtest-tracker setup
+
+# Name of the big-bear-speedtest-tracker application
+name: big-bear-speedtest-tracker
+# Service definitions for the big-bear-speedtest-tracker application
+services:
+  # Service name: app
+  big-bear-speedtest-tracker:
+    container_name: big-bear-speedtest-tracker
+    ports:
+      - "8080:80"
+      - "8443:443"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - DB_CONNECTION=mysql
+      - DB_HOST=big-bear-speedtest-tracker-db
+      - DB_PORT=3306
+      - DB_DATABASE=speedtest_tracker
+      - DB_USERNAME=casaos
+      - DB_PASSWORD=casaos
+      - TZ=America/Chicago
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/DATA/AppData/$AppID/config:/config"
+      - "/DATA/AppData/$AppID/web:/etc/ssl/web"
+    image: "linuxserver/speedtest-tracker:1.15.1@sha256:8d3c2826b708c18be7fb46c1afebc6bb3b1ab7c519473df1be89f5ecaa8bb31f"
+    restart: unless-stopped
+    depends_on:
+      - big-bear-speedtest-tracker-db
+    networks:
+      - big_bear_speedtest_tracker_network
+    x-casaos:
+      envs:
+        - container: PUID
+          description:
+            en_US: 'Container Variable: PUID'
+        - container: PGID
+          description:
+            en_US: 'Container Variable: PGID'
+        - container: DB_CONNECTION
+          description:
+            en_US: 'Container Variable: DB_CONNECTION'
+        - container: DB_HOST
+          description:
+            en_US: 'Container Variable: DB_HOST'
+        - container: DB_PORT
+          description:
+            en_US: 'Container Variable: DB_PORT'
+        - container: DB_DATABASE
+          description:
+            en_US: 'Container Variable: DB_DATABASE'
+        - container: DB_USERNAME
+          description:
+            en_US: 'Container Variable: DB_USERNAME'
+        - container: DB_PASSWORD
+          description:
+            en_US: 'Container Variable: DB_PASSWORD'
+        - container: TZ
+          description:
+            en_US: 'Container Variable: TZ'
+      volumes:
+        - container: /etc/localtime
+          description:
+            en_US: 'Container Path: /etc/localtime'
+        - container: /config
+          description:
+            en_US: 'Container Path: /config'
+        - container: /etc/ssl/web
+          description:
+            en_US: 'Container Path: /etc/ssl/web'
+      ports:
+        - container: "80"
+          description:
+            en_US: 'Container Port: 80'
+        - container: "443"
+          description:
+            en_US: 'Container Port: 443'
+  big-bear-speedtest-tracker-db:
+    image: mariadb:10@sha256:be981e4113326ada8d6004174dd09eeaefc03094037f811182a52d4f2e737350
+    container_name: big-bear-speedtest-tracker-db
+    restart: always
+    environment:
+      - MARIADB_DATABASE=speedtest_tracker
+      - MARIADB_USER=casaos
+      - MARIADB_PASSWORD=casaos
+      - MARIADB_RANDOM_ROOT_PASSWORD=true
+    volumes:
+      - "/DATA/AppData/$AppID/mysql:/var/lib/mysql"
+    networks:
+      - big_bear_speedtest_tracker_network
+    x-casaos:
+      envs:
+        - container: MARIADB_DATABASE
+          description:
+            en_US: 'Container Variable: MARIADB_DATABASE'
+        - container: MARIADB_USER
+          description:
+            en_US: 'Container Variable: MARIADB_USER'
+        - container: MARIADB_PASSWORD
+          description:
+            en_US: 'Container Variable: MARIADB_PASSWORD'
+        - container: MARIADB_RANDOM_ROOT_PASSWORD
+          description:
+            en_US: 'Container Variable: MARIADB_RANDOM_ROOT_PASSWORD'
+      volumes:
+        - container: /var/lib/mysql
+          description:
+            en_US: 'Container Path: /var/lib/mysql'
+# Network definition for the big-bear-speedtest-tracker application
+networks:
+  big_bear_speedtest_tracker_network:
+    driver: bridge
+x-casaos:
+  # Supported CPU architectures for this application
+  architectures:
+    - amd64
+    - arm64
+  # Stable reverse-domain app identifier
+  id: com.bigbeartechworld.speedtest-tracker
+  # Main service for this application
+  main: big-bear-speedtest-tracker
+  # Detailed description for the application
+  description:
+    en_US: A Docker image to check your internet speed using Ookla's Speedtest service. Build using Laravel and the Speedtest CLI.
+  # Brief tagline for the application
+  tagline:
+    en_US: Speedtest Tracker
+  # Developer's information
+  developer: alexjustesen
+  # Author of this particular configuration
+  author: BigBearTechWorld
+  # Icon URL for the application
+  icon: https://cdn.jsdelivr.net/gh/alexjustesen/speedtest-tracker/public/img/speedtest-tracker-icon.png
+  # Thumbnail image for the application (if any)
+  thumbnail: ""
+  # Installation tips
+  tips:
+    before_install:
+      en_US: |
+        Default Credentials - Username: admin@example.com and Password: password
+  # Title for the application
+  title:
+    en_US: Speedtest Tracker
+  # Category under which the application falls
+  category: Networking
+  # Default port mapping for the application
+  port_map: "8080"
+  scheme: http
+  index: /

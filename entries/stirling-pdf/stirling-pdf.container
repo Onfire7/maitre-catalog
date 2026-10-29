@@ -1,0 +1,13 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment=CSRF_DISABLED=false
+Environment=DEFAULT_LOCALE=en-US
+Environment=INSTALL_BOOK_AND_ADVANCED_HTML_OPS=false
+Environment=LANGS=en_US
+Environment=SECURITY_ENABLELOGIN=true
+Environment="SECURITY_INITIALLOGIN_PASSWORD={{ .Settings.ADMIN_PASSWORD }}"
+Environment=SECURITY_INITIALLOGIN_USERNAME=admin
+Volume={{ .Volumes.tessdata }}:/usr/share/tessdata:Z
+Volume={{ .Volumes.configs }}:/configs:Z

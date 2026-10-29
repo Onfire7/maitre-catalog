@@ -1,0 +1,38 @@
+id: audiobookshelf
+name: Audiobookshelf
+summary: Your audiobooks and podcasts, streamed to every device, each listener's place kept.
+description: |
+  Audiobookshelf serves your audiobooks and podcasts to its phone apps and any browser.
+  It fetches covers and chapters, downloads new podcast episodes, and keeps each
+  listener's progress in step across devices. The first visit creates its admin account.
+icon: icon.svg
+category: media
+image: ghcr.io/advplyr/audiobookshelf:2.35.0@sha256:89276ff2e0b3d2f07dd334b641f27a34ab7f02e1047c60b7b8a30126cb0813a5
+version: 2.35.0
+exposure: remote
+own_login: true
+web:
+  port: 80
+  path: /
+volumes:
+  - name: audiobooks
+    path: /audiobooks
+    shared: true
+  - name: config
+    path: /config
+  - name: metadata
+    path: /metadata
+  - name: podcasts
+    path: /podcasts
+    shared: true
+health:
+  http: /healthcheck
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Audiobookshelf/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/audiobookshelf.svg

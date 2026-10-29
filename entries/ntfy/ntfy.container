@@ -1,0 +1,8 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Exec='serve'
+Environment="TZ={{ .Settings.TZ }}"
+Volume={{ .Volumes.cache }}:/var/cache/ntfy:Z
+Volume={{ .Volumes.config }}:/etc/ntfy:Z

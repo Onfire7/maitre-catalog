@@ -8,15 +8,25 @@ Icons
 =====
 
 dashboard-icons by Homarr Labs (https://github.com/homarr-labs/dashboard-icons), Apache License 2.0:
+  actual-budget: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/actual-budget.svg
   adguard-home: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/adguard-home.svg
+  audiobookshelf: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/audiobookshelf.svg
+  calibre-web: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/calibre-web.svg
   forgejo: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/forgejo.svg
+  freshrss: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/freshrss.svg
   immich: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/immich.svg
+  it-tools: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/it-tools.svg
   jellyfin: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/jellyfin.svg
+  mealie: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/mealie.svg
+  memos: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/memos.svg
   minecraft: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/minecraft.svg
   navidrome: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/navidrome.svg
   nextcloud: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/nextcloud.svg
+  ntfy: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/ntfy.svg
   paperless-ngx: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/paperless-ngx.svg
   pihole: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/pi-hole.svg
+  speedtest-tracker: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/png/speedtest-tracker.png
+  stirling-pdf: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/stirling-pdf.svg
   syncthing: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/syncthing.svg
   uptime-kuma: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/uptime-kuma.svg
   vaultwarden: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/vaultwarden.svg
@@ -25,9 +35,19 @@ Converted entries
 =================
 
 Big Bear CasaOS, Copyright (c) 2023 Big Bear Enterprises, LLC (https://github.com/bigbeartechworld/big-bear-casaos), MIT License:
+  it-tools: converted from https://github.com/bigbeartechworld/big-bear-casaos/blob/05e3501e90017f2eb74d29f5d5bef13c3615a0af/Apps/it-tools/docker-compose.yml, MIT
+  mealie: converted from https://github.com/bigbeartechworld/big-bear-casaos/blob/05e3501e90017f2eb74d29f5d5bef13c3615a0af/Apps/mealie/docker-compose.yml, MIT
+  ntfy: converted from https://github.com/bigbeartechworld/big-bear-casaos/blob/05e3501e90017f2eb74d29f5d5bef13c3615a0af/Apps/ntfysh/docker-compose.yml, MIT
   paperless-ngx: converted from https://github.com/bigbeartechworld/big-bear-casaos/blob/38d1be50898ddb9f609c6bfcc26347dd41310378/Apps/paperless-ngx/docker-compose.yml, MIT
+  speedtest-tracker: converted from https://github.com/bigbeartechworld/big-bear-casaos/blob/05e3501e90017f2eb74d29f5d5bef13c3615a0af/Apps/speedtest-tracker/docker-compose.yml, MIT
+  stirling-pdf: converted from https://github.com/bigbeartechworld/big-bear-casaos/blob/05e3501e90017f2eb74d29f5d5bef13c3615a0af/Apps/stirling-pdf/docker-compose.yml, MIT
 
 CasaOS AppStore by IceWhale Technology (https://github.com/IceWhaleTech/CasaOS-AppStore), Apache License 2.0:
+  actual-budget: converted from https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/ActualBudget/docker-compose.yml, Apache-2.0
+  audiobookshelf: converted from https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Audiobookshelf/docker-compose.yml, Apache-2.0
+  calibre-web: converted from https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Calibre-web/docker-compose.yml, Apache-2.0
+  freshrss: converted from https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/FreshRSS/docker-compose.yml, Apache-2.0
+  memos: converted from https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Memos/docker-compose.yml, Apache-2.0
   navidrome: converted from https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Navidrome/docker-compose.yml, Apache-2.0
   nextcloud: converted from https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Nextcloud/docker-compose.yml, Apache-2.0
   pihole: converted from https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Pihole/docker-compose.yml, Apache-2.0

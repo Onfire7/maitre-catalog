@@ -1,0 +1,6 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment="TZ={{ .Settings.TZ }}"
+Volume={{ .Volumes.memos }}:/var/opt/memos:Z

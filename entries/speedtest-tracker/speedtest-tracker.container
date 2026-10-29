@@ -1,0 +1,10 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment="APP_KEY={{ .Settings.APP_KEY }}"
+Environment=DB_CONNECTION=sqlite
+Environment="PGID={{ .Settings.PGID }}"
+Environment="PUID={{ .Settings.PUID }}"
+Environment="TZ={{ .Settings.TZ }}"
+Volume={{ .Volumes.config }}:/config:Z

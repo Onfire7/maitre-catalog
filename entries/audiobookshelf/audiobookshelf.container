@@ -1,0 +1,8 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Volume={{ .Volumes.audiobooks }}:/audiobooks:z
+Volume={{ .Volumes.podcasts }}:/podcasts:z
+Volume={{ .Volumes.config }}:/config:Z
+Volume={{ .Volumes.metadata }}:/metadata:Z

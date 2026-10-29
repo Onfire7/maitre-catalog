@@ -1,0 +1,5 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Volume={{ .Volumes.data }}:/app/data:Z

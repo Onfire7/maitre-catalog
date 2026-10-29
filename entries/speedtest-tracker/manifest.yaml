@@ -1,0 +1,47 @@
+id: speedtest-tracker
+name: Speedtest Tracker
+summary: Test your internet speed on a schedule and see how it changes.
+description: |
+  Speedtest Tracker runs Ookla's speed test on a schedule and keeps the results,
+  so you can see your download, upload and ping over days and months. Sign in
+  first as admin@example.com with the password password, then change both.
+icon: icon.png
+category: network
+image: docker.io/linuxserver/speedtest-tracker:1.15.1@sha256:8d3c2826b708c18be7fb46c1afebc6bb3b1ab7c519473df1be89f5ecaa8bb31f
+version: 1.15.1
+exposure: private
+own_login: true
+web:
+  port: 80
+  path: /
+volumes:
+  - name: config
+    path: /config
+settings:
+  - key: APP_KEY
+    label: Key that encrypts its stored secrets
+    type: password
+    default: generate
+  - key: PGID
+    label: Run Speedtest Tracker as this group id.
+    type: text
+    default: '1000'
+  - key: PUID
+    label: Run Speedtest Tracker as this user id.
+    type: text
+    default: '1000'
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /api/healthcheck
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/05e3501e90017f2eb74d29f5d5bef13c3615a0af/Apps/speedtest-tracker/docker-compose.yml
+  licence: MIT
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/png/speedtest-tracker.png

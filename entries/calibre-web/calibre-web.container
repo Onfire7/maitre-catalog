@@ -1,0 +1,10 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment=DOCKER_MODS=ghcr.io/linuxserver/mods:universal-calibre
+Environment="PGID={{ .Settings.PGID }}"
+Environment="PUID={{ .Settings.PUID }}"
+Environment="TZ={{ .Settings.TZ }}"
+Volume={{ .Volumes.config }}:/config:Z
+Volume={{ .Volumes.books }}:/books:z

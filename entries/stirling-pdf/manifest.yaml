@@ -1,0 +1,38 @@
+id: stirling-pdf
+name: Stirling-PDF
+summary: Merge, split, convert, compress and sign PDFs on your own server.
+description: |
+  Stirling-PDF is a toolbox for PDF files in the browser: merge and split them,
+  convert to and from other formats, compress, rotate, add or remove pages, read
+  text from scans and sign. Files are worked on here and not sent anywhere. Sign
+  in as admin with the password made up at install.
+icon: icon.svg
+category: tools
+image: docker.io/stirlingtools/stirling-pdf:3.2.2@sha256:c6872dd056b0046a14c5de1e9970283e7f1e1ff685bb08090c6b37a231127d31
+version: 3.2.2
+exposure: private
+own_login: true
+web:
+  port: 8080
+  path: /
+volumes:
+  - name: configs
+    path: /configs
+  - name: tessdata
+    path: /usr/share/tessdata
+settings:
+  - key: ADMIN_PASSWORD
+    label: Password of the admin account
+    type: password
+    default: generate
+health:
+  http: /api/v1/info/status
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/05e3501e90017f2eb74d29f5d5bef13c3615a0af/Apps/stirling-pdf/docker-compose.yml
+  licence: MIT
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/stirling-pdf.svg

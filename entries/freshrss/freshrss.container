@@ -1,0 +1,8 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment=CRON_MIN=1,31
+Environment="TZ={{ .Settings.TZ }}"
+Volume={{ .Volumes.data }}:/var/www/FreshRSS/data:Z
+Volume={{ .Volumes.extensions }}:/var/www/FreshRSS/extensions:Z

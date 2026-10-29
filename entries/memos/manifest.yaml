@@ -1,0 +1,34 @@
+id: memos
+name: Memos
+summary: Quick notes in Markdown, tagged and kept on your own server.
+description: |
+  Memos is a place for short notes: thoughts, links, lists and drafts, written in
+  Markdown and found again by tag or search. The first account created is its admin.
+icon: icon.svg
+category: tools
+image: docker.io/neosmemo/memos:0.28.0@sha256:06066de94333c091ee67c2ad5dec5f15bf5f35b31498c90092f9915dd05e9f92
+version: 0.28.0
+exposure: private
+own_login: true
+web:
+  port: 5230
+  path: /
+volumes:
+  - name: memos
+    path: /var/opt/memos
+settings:
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /healthz
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Memos/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/memos.svg
