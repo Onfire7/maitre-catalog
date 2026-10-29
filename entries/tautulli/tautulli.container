@@ -1,0 +1,8 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment=PGID=1000
+Environment=PUID=1000
+Environment="TZ={{ .Settings.TZ }}"
+Volume={{ .Volumes.config }}:/config:Z

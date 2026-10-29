@@ -1,0 +1,6 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment=PORT=11434
+Volume={{ .Volumes.ollama }}:/root/.ollama:Z

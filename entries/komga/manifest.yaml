@@ -1,0 +1,39 @@
+id: komga
+name: Komga
+summary: Read your comics, manga and ebooks from a shared folder, in the browser or an app.
+description: |
+  Komga serves your comics, manga, BDs and ebooks with a reader in the browser,
+  OPDS for reading apps, and Tachiyomi and Mihon support. The first visit creates
+  its admin account.
+icon: icon.svg
+category: media
+image: docker.io/gotson/komga:1.24.4@sha256:dae630271561b642d47c9723803ec77900d1f0a803fbe6a42da69db5b21ebaeb
+version: 1.24.4
+project: https://github.com/gotson/komga
+exposure: private
+own_login: true
+web:
+  port: 25600
+  path: /
+volumes:
+  - name: config
+    path: /config
+  - name: library
+    path: /data
+    shared: true
+settings:
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Komga/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/komga.svg

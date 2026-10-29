@@ -1,0 +1,52 @@
+id: tandoor
+name: Tandoor Recipes
+summary: Collect your recipes, plan meals and shop for them.
+description: |
+  Tandoor keeps your recipes, imports them from web pages, scales them, plans
+  meals for the week and makes the shopping list. The first visit creates its
+  admin account.
+icon: icon.svg
+category: home
+version: 2.6.9
+project: https://github.com/TandoorRecipes/recipes
+exposure: private
+own_login: true
+web:
+  port: 8080
+  path: /
+  component: app
+volumes:
+  - name: mediafiles
+    path: /opt/recipes/mediafiles
+  - name: postgresql
+    path: /var/lib/postgresql/data
+  - name: staticfiles
+    path: /opt/recipes/staticfiles
+settings:
+  - key: SECRET_KEY
+    label: Key that signs its sessions
+    type: password
+    default: generate
+  - key: POSTGRES_PASSWORD
+    label: Database password
+    type: password
+    default: generate
+health:
+  http: /
+components:
+  - name: app
+    image: ghcr.io/tandoorrecipes/recipes:2.6.9@sha256:969c5b3552ffbf18a6f82b3ad5babbae89bfbd30ab6e3195fd3c158bcf3062ed
+    after:
+      - db
+  - name: db
+    image: docker.io/library/postgres:15-alpine@sha256:3d0f7584ed7d04e27fa050d6683a74746608faf21f202be78460d679cc56461f
+    wait_healthy: true
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/05e3501e90017f2eb74d29f5d5bef13c3615a0af/Apps/tandoor/docker-compose.yml
+  licence: MIT
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/tandoor-recipes.svg

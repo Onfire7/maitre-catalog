@@ -1,0 +1,55 @@
+id: bookstack
+name: BookStack
+summary: 'A wiki organised like books: shelves, books, chapters and pages.'
+description: |
+  BookStack keeps documentation and notes as shelves of books, with chapters and
+  pages edited in a WYSIWYG or Markdown editor, and search across all of it. Sign
+  in first as admin@admin.com with the password password, then change both.
+icon: icon.svg
+category: tools
+version: 26.09.20260929
+project: https://github.com/BookStackApp/BookStack
+exposure: private
+own_login: true
+web:
+  port: 80
+  path: /
+  component: app
+volumes:
+  - name: config
+    path: /config
+  - name: mysql
+    path: /config
+settings:
+  - key: APP_KEY
+    label: Key that encrypts its sessions and secrets
+    type: password
+    default: generate
+    format: base64
+    bytes: 32
+  - key: DB_PASSWORD
+    label: Database password
+    type: password
+    default: generate
+  - key: DB_ROOT_PASSWORD
+    label: Database administrator password
+    type: password
+    default: generate
+health:
+  http: /status
+components:
+  - name: app
+    image: docker.io/linuxserver/bookstack:26.09.20260929@sha256:7a6779d345d4d678614aa1a0a8a4d8456aeb98de10dfae700b839c3140c89f39
+    after:
+      - db
+  - name: db
+    image: docker.io/linuxserver/mariadb:10.11.6@sha256:7e34d92147dd7e1b63f43b3e76af73c273d7c3677786c32164a485f2a04964d8
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/05e3501e90017f2eb74d29f5d5bef13c3615a0af/Apps/bookstack/docker-compose.yml
+  licence: MIT
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/bookstack.svg

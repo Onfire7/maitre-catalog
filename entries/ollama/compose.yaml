@@ -1,0 +1,74 @@
+# Configuration for ollama-cpu setup
+
+# Name of the big-bear-ollama-cpu application
+name: big-bear-ollama-cpu
+# Service definitions for the big-bear-ollama-cpu application
+services:
+  # Service name: big-bear-ollama-cpu
+  # The `big-bear-ollama-cpu` service definition
+  big-bear-ollama-cpu:
+    # Name of the container
+    container_name: big-bear-ollama-cpu
+    # Image to be used for the container
+    image: ollama/ollama:0.40.11@sha256:dea72d1e22270fe095b68fdf756d2b489d615643c5a2eaebbc5f569181e322d8
+    # Container restart policy
+    restart: unless-stopped
+    # Environment variables
+    environment:
+      - PORT=11434
+    # Volumes to be mounted to the container
+    volumes:
+      - /DATA/AppData/$AppID/.ollama:/root/.ollama
+    # Ports mapping between host and container
+    ports:
+      # Mapping port 11434 of the host to port 11434 of the container
+      - "11434:11434"
+    devices:
+      # Attach GPU
+      - /dev/kfd
+      - /dev/dri
+    x-casaos:
+      envs:
+        - container: PORT
+          description:
+            en_US: 'Container Variable: PORT'
+      volumes:
+        - container: /root/.ollama
+          description:
+            en_US: 'Container Path: /root/.ollama'
+      ports:
+        - container: "11434"
+          description:
+            en_US: 'Container Port: 11434'
+x-casaos:
+  # Supported CPU architectures for this application
+  architectures:
+    - amd64
+    - arm64
+  # Stable reverse-domain app identifier
+  id: com.bigbeartechworld.ollama-cpu
+  # Main service for this application
+  main: big-bear-ollama-cpu
+  # Detailed description for the application
+  description:
+    en_US: Get up and running with Llama 3, Mistral, Gemma, and other large language models.
+  # Brief tagline for the application
+  tagline:
+    en_US: LLMs inference server with OpenAI compatible API
+  # Developer's information
+  developer: ollama
+  # Author of this particular configuration
+  author: BigBearTechWorld
+  # Icon URL for the application
+  icon: https://cdn.jsdelivr.net/gh/selfhst/icons/png/ollama.png
+  # Thumbnail image for the application (if any)
+  thumbnail: ""
+  # Title for the application
+  title:
+    en_US: Ollama - CPU
+  # Category under which the application falls
+  category: AI
+  # Default port mapping for the application
+  port_map: "11434"
+  scheme: http
+  index: /

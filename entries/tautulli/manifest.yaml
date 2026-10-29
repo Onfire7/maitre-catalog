@@ -1,0 +1,36 @@
+id: tautulli
+name: Tautulli
+summary: See who watches what on your Plex server, with statistics and notifications.
+description: |
+  Tautulli watches your Plex Media Server: what is playing and for whom,
+  history and statistics, and notifications when something starts or is added.
+  Its setup wizard offers a login.
+icon: icon.svg
+category: media
+image: docker.io/linuxserver/tautulli:2.17.1@sha256:f13b3e7d6798e62eef6f9a9e65513d2e0a8f468524432c2d753b7b458b1876d4
+version: 2.17.1
+project: https://github.com/Tautulli/Tautulli
+exposure: private
+own_login: false
+web:
+  port: 8181
+  path: /
+volumes:
+  - name: config
+    path: /config
+settings:
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Tautulli/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/tautulli.svg

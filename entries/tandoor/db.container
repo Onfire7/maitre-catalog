@@ -1,0 +1,12 @@
+[Container]
+Image={{ .Image }}
+HealthInterval=10s
+HealthTimeout=5s
+HealthRetries=5
+HealthStartPeriod=30s
+Environment=POSTGRES_DB=tandoordb
+Environment="POSTGRES_PASSWORD={{ .Settings.POSTGRES_PASSWORD }}"
+Environment=POSTGRES_PORT=5432
+Environment=POSTGRES_USER=tandoor
+Volume={{ .Volumes.postgresql }}:/var/lib/postgresql/data:Z
+HealthCmd=pg_isready -d tandoor

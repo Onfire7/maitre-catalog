@@ -1,0 +1,9 @@
+[Container]
+Image={{ .Image }}
+Environment="APP_KEY=base64:{{ .Settings.APP_KEY }}"
+Environment="APP_URL=http://{{ .Name }}.local"
+Environment=DB_DATABASE=bookstackapp
+Environment=DB_HOST=db
+Environment="DB_PASSWORD={{ .Settings.DB_PASSWORD }}"
+Environment=DB_USERNAME=bookstack
+Volume={{ .Volumes.config }}:/config:Z

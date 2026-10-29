@@ -1,0 +1,11 @@
+[Container]
+Image={{ .Image }}
+Environment=DB_ENGINE=django.db.backends.postgresql
+Environment=POSTGRES_DB=tandoordb
+Environment=POSTGRES_HOST=db
+Environment="POSTGRES_PASSWORD={{ .Settings.POSTGRES_PASSWORD }}"
+Environment=POSTGRES_PORT=5432
+Environment=POSTGRES_USER=tandoor
+Environment="SECRET_KEY={{ .Settings.SECRET_KEY }}"
+Volume={{ .Volumes.staticfiles }}:/opt/recipes/staticfiles:Z
+Volume={{ .Volumes.mediafiles }}:/opt/recipes/mediafiles:Z

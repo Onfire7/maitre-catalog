@@ -1,0 +1,6 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment="OLLAMA_BASE_URL={{ .Settings.OLLAMA_BASE_URL }}"
+Volume={{ .Volumes.data }}:/app/backend/data:Z

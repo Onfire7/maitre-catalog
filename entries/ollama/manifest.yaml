@@ -1,0 +1,32 @@
+id: ollama
+name: Ollama
+summary: Run large language models on your own server, for Open WebUI and other apps.
+description: |
+  Ollama downloads and runs open language models (Llama, Mistral, Gemma, Qwen
+  and more) and answers other apps over its API, at http://ollama:11434 on the
+  Node's network. It runs on the processor here; larger models need plenty of
+  memory. Its page only says it is running: talk to it through Open WebUI.
+icon: icon.svg
+category: tools
+image: docker.io/ollama/ollama:0.40.11@sha256:dea72d1e22270fe095b68fdf756d2b489d615643c5a2eaebbc5f569181e322d8
+version: 0.40.11
+project: https://github.com/ollama/ollama
+exposure: private
+own_login: false
+web:
+  port: 11434
+  path: /
+volumes:
+  - name: ollama
+    path: /root/.ollama
+health:
+  http: /
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/05e3501e90017f2eb74d29f5d5bef13c3615a0af/Apps/ollama-cpu/docker-compose.yml
+  licence: MIT
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/ollama.svg

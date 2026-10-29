@@ -1,0 +1,15 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment="PASS={{ .Settings.PASS }}"
+Environment=PEERPORT=51413
+Environment=PGID=1000
+Environment=PUID=1000
+Environment="TZ={{ .Settings.TZ }}"
+Environment=USER=admin
+Volume={{ .Volumes.config }}:/config:Z
+Volume={{ .Volumes.downloads }}:/downloads:z
+Volume={{ .Volumes.watch }}:/watch:z
+PublishPort=51413:51413
+PublishPort=51413:51413/udp

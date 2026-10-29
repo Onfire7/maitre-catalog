@@ -1,0 +1,49 @@
+id: transmission
+name: Transmission
+summary: A light BitTorrent client, with a web page to manage downloads.
+description: |
+  Transmission downloads torrents into the shared Downloads folder and picks up
+  torrent files dropped in the watch folder. Sign in as admin with the password
+  made up at install. Peers reach it on the Node's port 51413.
+icon: icon.svg
+category: media
+image: docker.io/linuxserver/transmission:4.1.3@sha256:ebefa8cb3e36a8ce667b7739f51b86c24e9fd07f367e9fee9f21df48ea4e6542
+version: 4.1.3
+project: https://github.com/transmission/transmission
+exposure: private
+own_login: true
+host_ports:
+  - 51413/tcp
+  - 51413/udp
+web:
+  port: 9091
+  path: /
+volumes:
+  - name: config
+    path: /config
+  - name: downloads
+    path: /downloads
+    shared: true
+  - name: watch
+    path: /watch
+    shared: true
+settings:
+  - key: PASS
+    label: Password of its web page (user admin)
+    type: password
+    default: generate
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /transmission/web/
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Transmission/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/transmission.svg
