@@ -1,0 +1,6 @@
+[Container]
+Image={{ .Image }}
+Environment=POSTGRES_DB=joplin
+Environment="POSTGRES_PASSWORD={{ .Settings.POSTGRES_PASSWORD }}"
+Environment=POSTGRES_USER=joplin
+Volume={{ .Volumes.data }}:/var/lib/postgresql/data:Z

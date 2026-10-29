@@ -1,0 +1,44 @@
+id: heimdall
+name: Heimdall
+summary: A start page of tiles for your apps and links.
+description: |
+  Heimdall is a dashboard of tiles for the apps and sites you use, some of
+  which show live information. Users and passwords are optional, in its
+  settings.
+icon: icon.svg
+category: tools
+image: docker.io/linuxserver/heimdall:2.8.3@sha256:928b80d532929a3ff4f53bd49437c721e76334a6d4c9d3d992e522b9ccdd08c2
+version: 2.8.3
+project: https://github.com/linuxserver/Heimdall
+exposure: private
+own_login: false
+web:
+  port: 80
+  path: /
+volumes:
+  - name: config
+    path: /config
+settings:
+  - key: PGID
+    label: 'Container Variable: PGID'
+    type: text
+    default: '1000'
+  - key: PUID
+    label: 'Container Variable: PUID'
+    type: text
+    default: '1000'
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/05e3501e90017f2eb74d29f5d5bef13c3615a0af/Apps/heimdall/docker-compose.yml
+  licence: MIT
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/heimdall.svg

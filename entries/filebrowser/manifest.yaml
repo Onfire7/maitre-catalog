@@ -1,0 +1,48 @@
+id: filebrowser
+name: File Browser
+summary: Browse, upload and share the files in your shared folders, from a web page.
+description: |
+  File Browser shows the shared folders you give it as a file manager in the
+  browser: upload, download, rename, edit and share links. Sign in as admin; the
+  first password is printed in the Service's logs when it starts.
+icon: icon.svg
+category: tools
+image: docker.io/filebrowser/filebrowser:v2.63.23-s6@sha256:ee4ac79e52966a5f6247f99c7d667c1debfb277a3a61ab829f505aa8f4c74b21
+version: 2.63.23-s6
+project: https://github.com/filebrowser/filebrowser
+exposure: private
+own_login: true
+web:
+  port: 80
+  path: /
+volumes:
+  - name: appdata
+    path: /srv/app-data
+    shared: true
+  - name: config
+    path: /config
+  - name: db
+    path: /database
+  - name: documents
+    path: /srv/documents
+    shared: true
+  - name: downloads
+    path: /srv/downloads
+    shared: true
+  - name: gallery
+    path: /srv/gallery
+    shared: true
+  - name: media
+    path: /srv/media
+    shared: true
+health:
+  http: /health
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/05e3501e90017f2eb74d29f5d5bef13c3615a0af/Apps/filebrowser/docker-compose.yml
+  licence: MIT
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/filebrowser.svg

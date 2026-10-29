@@ -1,0 +1,9 @@
+[Container]
+Image={{ .Image }}
+Environment=VIKUNJA_DATABASE_DATABASE=vikunja
+Environment=VIKUNJA_DATABASE_HOST=db
+Environment="VIKUNJA_DATABASE_PASSWORD={{ .Settings.VIKUNJA_DATABASE_PASSWORD }}"
+Environment=VIKUNJA_DATABASE_TYPE=mysql
+Environment=VIKUNJA_DATABASE_USER=vikunja
+Environment="VIKUNJA_SERVICE_PUBLICURL=http://{{ .Name }}.local/"
+Volume={{ .Volumes.files }}:/app/vikunja/files:Z

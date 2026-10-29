@@ -1,0 +1,11 @@
+[Container]
+Image={{ .Image }}
+Environment="APP_BASE_URL=http://{{ .Name }}.local"
+Environment=APP_PORT=22300
+Environment=DB_CLIENT=pg
+Environment=MAX_TIME_DRIFT=0
+Environment=POSTGRES_DATABASE=joplin
+Environment=POSTGRES_HOST=db
+Environment="POSTGRES_PASSWORD={{ .Settings.POSTGRES_PASSWORD }}"
+Environment=POSTGRES_PORT=5432
+Environment=POSTGRES_USER=joplin

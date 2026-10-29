@@ -1,0 +1,51 @@
+id: emby
+name: Emby
+summary: Stream your films, series, music and photos to the Emby apps.
+description: |
+  Emby organises your films, series, music and photos and streams them to its
+  apps on TVs, phones and browsers. The first visit creates its admin account.
+  Hardware transcoding with the Node's graphics card needs Emby Premiere.
+icon: icon.svg
+category: media
+image: docker.io/emby/embyserver:4.9.5.0@sha256:734a6f03c7c783a9e566b08d09a2b6376f41229ff29f032a7e00302e0be98f8a
+version: 4.9.5
+project: https://github.com/MediaBrowser/Emby
+exposure: private
+own_login: true
+web:
+  port: 8096
+  path: /
+volumes:
+  - name: config
+    path: /config
+  - name: movies
+    path: /data/movies
+    shared: true
+  - name: tv_shows
+    path: /data/tvshows
+    shared: true
+settings:
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+  - key: GPU
+    label: Graphics card for hardware transcoding
+    type: device
+    device: video
+health:
+  http: /emby/System/Ping
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Emby/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/emby.svg
+grants:
+  - option: AddDevice=*
+    why: Uses the graphics card you picked to convert video for devices that cannot play it as it is, instead of the processor.
+    optional: hardware_transcoding
+    without: Video is converted by the processor, more slowly.

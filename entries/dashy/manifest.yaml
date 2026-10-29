@@ -1,0 +1,31 @@
+id: dashy
+name: Dashy
+summary: A start page for your home server, configured in one YAML file.
+description: |
+  Dashy is a dashboard of your apps and links with status checks, widgets and
+  themes, set up in its editor or in conf.yml. It has no login until you set
+  one in its configuration.
+icon: icon.png
+category: tools
+image: docker.io/lissy93/dashy:4.0.8@sha256:1b3de6159d93e1a75f0b808e74d8cb5100c06251b120abd2d68e557ec7544ab6
+version: 4.0.8
+project: https://github.com/lissy93/dashy
+exposure: private
+own_login: false
+web:
+  port: 8080
+  path: /
+volumes:
+  - name: user_data
+    path: /app/user-data
+health:
+  http: /
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/05e3501e90017f2eb74d29f5d5bef13c3615a0af/Apps/dashy-v4/docker-compose.yml
+  licence: MIT
+  converted: '2026-10-29'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/png/dashy.png

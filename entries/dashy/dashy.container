@@ -1,0 +1,11 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+HealthInterval=1m30s
+HealthTimeout=10s
+HealthRetries=3
+HealthStartPeriod=40s
+Environment=NODE_ENV=production
+Volume={{ .Volumes.user_data }}:/app/user-data:Z
+HealthCmd=["node","/app/services/healthcheck.js"]

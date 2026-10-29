@@ -1,0 +1,12 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+{{ if .Grants.hardware_transcoding }}{{ with .Settings.GPU }}AddDevice={{ . }}
+{{ end }}{{ end }}Environment=GID=100
+Environment=GIDLIST=100
+Environment="TZ={{ .Settings.TZ }}"
+Environment=UID=1000
+Volume={{ .Volumes.config }}:/config:Z
+Volume={{ .Volumes.tv_shows }}:/data/tvshows:z
+Volume={{ .Volumes.movies }}:/data/movies:z

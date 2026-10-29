@@ -1,0 +1,13 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment=PGID=0
+Environment=PUID=0
+Volume={{ .Volumes.appdata }}:/srv/app-data:z
+Volume={{ .Volumes.documents }}:/srv/documents:z
+Volume={{ .Volumes.downloads }}:/srv/downloads:z
+Volume={{ .Volumes.gallery }}:/srv/gallery:z
+Volume={{ .Volumes.media }}:/srv/media:z
+Volume={{ .Volumes.db }}:/database:Z
+Volume={{ .Volumes.config }}:/config:Z

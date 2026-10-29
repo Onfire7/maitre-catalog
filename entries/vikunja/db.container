@@ -1,0 +1,8 @@
+[Container]
+Image={{ .Image }}
+Exec='--character-set-server=utf8mb4' '--collation-server=utf8mb4_unicode_ci'
+Environment=MYSQL_DATABASE=vikunja
+Environment="MYSQL_PASSWORD={{ .Settings.VIKUNJA_DATABASE_PASSWORD }}"
+Environment="MYSQL_ROOT_PASSWORD={{ .Settings.DB_ROOT_PASSWORD }}"
+Environment=MYSQL_USER=vikunja
+Volume={{ .Volumes.mysql }}:/var/lib/mysql:Z
