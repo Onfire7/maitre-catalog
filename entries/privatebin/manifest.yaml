@@ -1,0 +1,34 @@
+id: privatebin
+name: PrivateBin
+summary: Paste text that is encrypted in the browser; the Service never sees what it holds.
+description: |
+  PrivateBin is a pastebin: paste text or a file, choose how long it lives and
+  whether it burns after reading, and share the link. Everything is encrypted in
+  the browser with a key that lives only in the link, so the Service stores
+  nothing it can read. Its settings are in conf.php in the config volume.
+icon: icon.svg
+category: tools
+image: docker.io/privatebin/nginx-fpm-alpine:2.1.0@sha256:0f80fb240c3c3073c53a82893da7c7d62f03f4e05403855b720e4371541ba412
+version: 2.1.0
+project: https://github.com/PrivateBin/PrivateBin
+exposure: private
+own_login: false
+web:
+  port: 8080
+  path: /
+volumes:
+  - name: config
+    path: /srv/cfg
+  - name: data
+    path: /srv/data
+health:
+  http: /
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/9196c7c34f9cb6ce801aa0fd8747c5356dd138fa/Apps/privatebin/docker-compose.yml
+  licence: MIT
+  converted: '2026-11-02'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/privatebin.svg

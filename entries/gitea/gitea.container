@@ -1,0 +1,11 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment=USER_GID=1000
+Environment=USER_UID=1000
+Environment="GITEA__server__ROOT_URL=http://{{ .Name }}.local/"
+Environment="GITEA__server__SSH_DOMAIN={{ .Name }}.local"
+Environment=GITEA__server__SSH_PORT=222
+Volume={{ .Volumes.data }}:/data:Z
+PublishPort=222:22

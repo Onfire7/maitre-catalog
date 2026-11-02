@@ -1,0 +1,48 @@
+id: lychee
+name: Lychee
+summary: 'A photo gallery: upload albums, share them by link, and browse them like an app.'
+description: |
+  Lychee is a photo gallery with albums, tags, maps and sharing by link, that
+  reads EXIF and makes thumbnails and smaller sizes on upload. The first visit
+  creates the administrator; photos go in the pictures volume, which Lychee
+  manages itself.
+icon: icon.svg
+category: media
+image: docker.io/linuxserver/lychee:7.12.0@sha256:a8d490d2ddff6833dcb2ae6f6677394b5454fd09fac65844e94a3a638f2aea8c
+version: 7.12.0
+project: https://github.com/LycheeOrg/Lychee
+exposure: private
+own_login: true
+web:
+  port: 80
+  path: /
+volumes:
+  - name: config
+    path: /config
+  - name: pictures
+    path: /pictures
+    size: large
+settings:
+  - key: PGID
+    label: 'Container Variable: PGID'
+    type: text
+    default: '1000'
+  - key: PUID
+    label: 'Container Variable: PUID'
+    type: text
+    default: '1000'
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/9196c7c34f9cb6ce801aa0fd8747c5356dd138fa/Apps/lychee/docker-compose.yml
+  licence: MIT
+  converted: '2026-11-02'
+  icon:
+    pack: lychee
+    licence: MIT
+    url: https://raw.githubusercontent.com/LycheeOrg/Lychee/901424065ee643fbe295853a3e3b54239fb1d4e6/public/img/logo4.svg

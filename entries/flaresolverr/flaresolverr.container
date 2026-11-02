@@ -1,0 +1,9 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment=CAPTCHA_SOLVER=none
+Environment=LOG_HTML=false
+Environment=LOG_LEVEL=info
+Environment="TZ={{ .Settings.TZ }}"
+Environment=UMASK=002

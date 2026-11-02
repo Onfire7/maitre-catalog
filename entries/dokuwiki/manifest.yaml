@@ -1,0 +1,45 @@
+id: dokuwiki
+name: DokuWiki
+summary: A wiki kept in plain text files, with no database, access control and many plugins.
+description: |
+  DokuWiki is a wiki that stores every page as a text file, so it needs no
+  database and backs up by copying its config volume. The first visit opens its
+  installer, which names the wiki and creates the administrator; plugins and
+  templates are installed from its admin page.
+icon: icon.svg
+category: tools
+image: docker.io/linuxserver/dokuwiki:version-2026-07-14c@sha256:fac142ae9f7df5d3457037bc8bb668f8bfc6a6b9e02d5d1a5743bf1d030f9a10
+version: 2026-07-14c
+project: https://github.com/dokuwiki/dokuwiki
+exposure: private
+own_login: true
+web:
+  port: 80
+  path: /
+volumes:
+  - name: config
+    path: /config
+settings:
+  - key: PGID
+    label: 'Container Variable: PGID'
+    type: text
+    default: '1000'
+  - key: PUID
+    label: 'Container Variable: PUID'
+    type: text
+    default: '1000'
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/9196c7c34f9cb6ce801aa0fd8747c5356dd138fa/Apps/dokuwiki/docker-compose.yml
+  licence: MIT
+  converted: '2026-11-02'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/dokuwiki.svg

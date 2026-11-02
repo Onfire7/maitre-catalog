@@ -1,0 +1,51 @@
+id: deluge
+name: Deluge
+summary: 'A BitTorrent client with a full web page: labels, plugins and per-torrent limits.'
+description: |
+  Deluge downloads torrents into the shared Downloads folder, with plugins for
+  labels, scheduling and RSS feeds. Its web page's password starts as deluge;
+  change it in Preferences on the first visit. Peers reach it on the Node's port
+  6881.
+icon: icon.svg
+category: media
+image: docker.io/linuxserver/deluge:2.2.0@sha256:1dbf9663387f85bb5805fcb1418a246f877e01374bb2a6cd9e632c72fb2e1ebc
+version: 2.2.0
+project: https://github.com/deluge-torrent/deluge
+exposure: private
+own_login: true
+host_ports:
+  - 6881/tcp
+  - 6881/udp
+web:
+  port: 8112
+  path: /
+volumes:
+  - name: config
+    path: /config
+  - name: downloads
+    path: /downloads
+    shared: true
+settings:
+  - key: PGID
+    label: Run Deluge as specified gid.
+    type: text
+    default: '1000'
+  - key: PUID
+    label: Run Deluge as specified uid.
+    type: text
+    default: '1000'
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/b14a0586a972c24b70da43a776ce6cd78b593f59/Apps/Deluge/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-11-02'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/deluge.svg

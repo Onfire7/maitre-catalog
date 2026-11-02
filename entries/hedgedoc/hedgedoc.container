@@ -1,0 +1,12 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment="CMD_ALLOW_ORIGIN={{ .Name }}.local"
+Environment="CMD_DOMAIN={{ .Name }}.local"
+Environment=CMD_PROTOCOL_USESSL=false
+Environment=CMD_URL_ADDPORT=false
+Environment="PGID={{ .Settings.PGID }}"
+Environment="PUID={{ .Settings.PUID }}"
+Environment="TZ={{ .Settings.TZ }}"
+Volume={{ .Volumes.config }}:/config:Z

@@ -1,0 +1,45 @@
+id: pairdrop
+name: PairDrop
+summary: Send files and text between phones and computers from a web page, like AirDrop.
+description: |
+  PairDrop is a page you open on two devices to send files or text straight
+  between them. Devices that reach it through the same Node see each other at
+  once; others can be paired with a six-digit code. Nothing is stored on the
+  Service.
+icon: icon.png
+category: tools
+image: docker.io/linuxserver/pairdrop:1.11.2@sha256:447e348a5c52776c7c92435b472502e4ad62e08d954b2b7f26737cb588badb6b
+version: 1.11.2
+project: https://github.com/schlagmichdoch/PairDrop
+exposure: private
+own_login: false
+web:
+  port: 3000
+  path: /
+volumes:
+  - name: config
+    path: /config
+settings:
+  - key: PGID
+    label: 'Container Variable: PGID'
+    type: text
+    default: '1000'
+  - key: PUID
+    label: 'Container Variable: PUID'
+    type: text
+    default: '1000'
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/9196c7c34f9cb6ce801aa0fd8747c5356dd138fa/Apps/pairdrop/docker-compose.yml
+  licence: MIT
+  converted: '2026-11-02'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/png/pairdrop.png

@@ -1,0 +1,6 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Volume={{ .Volumes.data }}:/srv/data:Z
+Volume={{ .Volumes.config }}:/srv/cfg:Z

@@ -1,0 +1,44 @@
+id: hedgedoc
+name: HedgeDoc
+summary: Write Markdown notes together in real time, with slides, diagrams and maths.
+description: |
+  HedgeDoc is a collaborative Markdown editor: everyone with a note's link edits it
+  at once, with live preview, slide mode, diagrams and maths. Register an account
+  on the first visit; notes are kept in a database in its config volume.
+icon: icon.svg
+category: tools
+image: docker.io/linuxserver/hedgedoc:1.12.0@sha256:236f2bccd142e747eecac0b15f4482fb564795bb195aa012b5dd5e459dd5c79a
+version: 1.12.0
+project: https://github.com/hedgedoc/hedgedoc
+exposure: private
+own_login: true
+web:
+  port: 3000
+  path: /
+volumes:
+  - name: config
+    path: /config
+settings:
+  - key: PGID
+    label: 'Container Variable: PGID'
+    type: text
+    default: '1000'
+  - key: PUID
+    label: 'Container Variable: PUID'
+    type: text
+    default: '1000'
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /status
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/9196c7c34f9cb6ce801aa0fd8747c5356dd138fa/Apps/hedgedoc/docker-compose.yml
+  licence: MIT
+  converted: '2026-11-02'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/hedgedoc.svg

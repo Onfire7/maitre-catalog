@@ -1,0 +1,34 @@
+id: flaresolverr
+name: FlareSolverr
+summary: Gets past Cloudflare's browser checks for Prowlarr and the indexers it uses.
+description: |
+  FlareSolverr is a helper for Prowlarr, Sonarr and Radarr: when an indexer sits
+  behind Cloudflare's checks, they send the request through FlareSolverr, which
+  opens the page in its own browser and passes the cookies back. It has no page of
+  its own to speak of; add it in Prowlarr's indexer proxies as http://flaresolverr:8191.
+icon: icon.svg
+category: media
+image: ghcr.io/flaresolverr/flaresolverr:v3.5.2@sha256:c80ae007ce2ccdcd217a12426e4f039ef763ff90738c808d38810c3e59323767
+version: 3.5.2
+project: https://github.com/FlareSolverr/FlareSolverr
+exposure: private
+own_login: false
+web:
+  port: 8191
+  path: /
+settings:
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /health
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/b14a0586a972c24b70da43a776ce6cd78b593f59/Apps/FlareSolverr/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-11-02'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/flaresolverr.svg

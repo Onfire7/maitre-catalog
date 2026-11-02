@@ -1,0 +1,13 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment=APP_NAME=Lychee
+Environment="APP_URL=http://{{ .Name }}.local"
+Environment=DB_CONNECTION=sqlite
+Environment="PGID={{ .Settings.PGID }}"
+Environment="PUID={{ .Settings.PUID }}"
+Environment=TRUSTED_PROXIES=*
+Environment="TZ={{ .Settings.TZ }}"
+Volume={{ .Volumes.config }}:/config:Z
+Volume={{ .Volumes.pictures }}:/pictures:Z

@@ -1,0 +1,31 @@
+id: readeck
+name: Readeck
+summary: Save articles to read later, cleaned of clutter, with highlights and an e-book export.
+description: |
+  Readeck saves a web page's readable content, so an article stays even when the
+  site changes, and lets you highlight, label and export it as an e-book. The
+  first visit creates your account; there are browser extensions.
+icon: icon.svg
+category: tools
+image: codeberg.org/readeck/readeck:0.23.5@sha256:17dea468f4f713930338062f58a3a5e0d04e37d2961ddb827792e223f3db91b4
+version: 0.23.5
+project: https://codeberg.org/readeck/readeck
+exposure: private
+own_login: true
+web:
+  port: 8000
+  path: /
+volumes:
+  - name: data
+    path: /readeck
+health:
+  http: /
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/9196c7c34f9cb6ce801aa0fd8747c5356dd138fa/Apps/readeck/docker-compose.yml
+  licence: MIT
+  converted: '2026-11-02'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/readeck.svg
