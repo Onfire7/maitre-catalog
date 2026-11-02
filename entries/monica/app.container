@@ -1,0 +1,9 @@
+[Container]
+Image={{ .Image }}
+Environment="APP_KEY={{ .Settings.APP_KEY }}"
+Environment=DB_HOST=db
+Environment="DB_PASSWORD={{ .Settings.DB_PASSWORD }}"
+Environment=DB_USERNAME=monicauser
+Environment="APP_URL=http://{{ .Name }}.local"
+Environment=APP_TRUSTED_PROXIES=*
+Volume={{ .Volumes.storage }}:/var/www/html/storage:Z

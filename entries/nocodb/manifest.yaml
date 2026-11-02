@@ -1,0 +1,60 @@
+id: nocodb
+name: NocoDB
+summary: Turn a database into a spreadsheet-like workspace with forms, views and an API.
+description: |
+  NocoDB is a no-code database: tables edited like a spreadsheet, with grid,
+  kanban, gallery, form and calendar views, links between tables, and an API for
+  every base. Register the first account on the first visit; it keeps its data in
+  its own PostgreSQL.
+icon: icon.svg
+category: tools
+version: 0.301.5
+project: https://github.com/nocodb/nocodb
+exposure: private
+own_login: true
+web:
+  port: 8080
+  path: /
+  component: app
+volumes:
+  - name: data
+    path: /usr/src/app/data
+  - name: pgdata
+    path: /var/lib/postgresql/data
+  - name: redis
+    path: /data
+settings:
+  - key: NC_AUTH_JWT_SECRET
+    label: Session secret
+    type: password
+    default: generate
+  - key: DB_PASSWORD
+    label: Database password
+    type: password
+    default: generate
+  - key: REDIS_PASSWORD
+    label: Cache password
+    type: password
+    default: generate
+health:
+  http: /api/v1/health
+components:
+  - name: app
+    image: docker.io/nocodb/nocodb:0.301.5@sha256:d9516f0bf546fd6c78a382ab0657626c683fca7aaafdbbe53c66baf15df7fc0d
+    after:
+      - db
+      - redis
+  - name: db
+    image: docker.io/library/postgres:13@sha256:4689940c683801b4ab839ab3b0a0a3555a5fe425371422310944e89eca7d8068
+  - name: redis
+    image: docker.io/library/redis:8.10.3-alpine@sha256:21090af93f8324db2f0f0f4f38a7c60369d47d917e000c3423d89d2ae2883537
+    wait_healthy: true
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/9196c7c34f9cb6ce801aa0fd8747c5356dd138fa/Apps/nocodb/docker-compose.yml
+  licence: MIT
+  converted: '2026-11-02'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/nocodb.svg

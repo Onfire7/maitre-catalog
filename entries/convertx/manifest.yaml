@@ -1,0 +1,37 @@
+id: convertx
+name: ConvertX
+summary: 'Converts files between formats in the browser: documents, images, audio, video and more.'
+description: |
+  ConvertX takes a file and gives it back in another format, with over a thousand
+  conversions through ffmpeg, ImageMagick, Pandoc, LibreOffice and others, all
+  run on the Node. Create the first account on the first visit; the first account
+  is the only one unless registration is allowed.
+icon: icon.png
+category: tools
+image: docker.io/c4illin/convertx:v0.20.0@sha256:6259e0c1e063120b1ddbc6937372a83be58182b2c9dc82264f58e100907b3e51
+version: 0.20.0
+project: https://github.com/C4illin/ConvertX
+exposure: private
+own_login: true
+web:
+  port: 3000
+  path: /
+volumes:
+  - name: data
+    path: /app/data
+settings:
+  - key: JWT_SECRET
+    label: Session secret
+    type: password
+    default: generate
+health:
+  http: /
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/b14a0586a972c24b70da43a776ce6cd78b593f59/Apps/ConvertX/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-11-02'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/png/convertx.png

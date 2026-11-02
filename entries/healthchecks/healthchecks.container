@@ -1,0 +1,16 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment=APPRISE_ENABLED=False
+Environment=DEBUG=False
+Environment=PGID=1000
+Environment=PUID=1000
+Environment="SECRET_KEY={{ .Settings.SECRET_KEY }}"
+Environment=SITE_NAME=Healthchecks
+Environment="SITE_ROOT=http://{{ .Name }}.local"
+Environment="SUPERUSER_EMAIL={{ .Settings.SUPERUSER_EMAIL }}"
+Environment="SUPERUSER_PASSWORD={{ .Settings.SUPERUSER_PASSWORD }}"
+Environment="TZ={{ .Settings.TZ }}"
+Environment=INTEGRATIONS_ALLOW_PRIVATE_IPS=True
+Volume={{ .Volumes.config }}:/config:Z

@@ -1,0 +1,20 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+HealthInterval=30s
+HealthTimeout=10s
+HealthRetries=3
+HealthStartPeriod=30s
+Environment="ADMIN_PASSWORD={{ .Settings.ADMIN_PASSWORD }}"
+Environment=AUTHENTICATION_METHOD=apikey
+Environment=DB_FILENAME=/opt/etherpad-lite/var/dirty.db
+Environment=DB_TYPE=dirty
+Environment="DEFAULT_PAD_TEXT=Welcome to Etherpad!\n\nThis pad's text is synchronised as you type, so everyone viewing this page sees the same text. Share its link to write together.\n"
+Environment=REQUIRE_AUTHENTICATION=false
+Environment=REQUIRE_AUTHORIZATION=false
+Environment=SHOW_SETTINGS_IN_ADMIN_PAGE=true
+Environment=TITLE=Etherpad
+Environment=TRUST_PROXY=true
+Volume={{ .Volumes.var }}:/opt/etherpad-lite/var:Z
+HealthCmd=["wget","-q","-O-","http://localhost:9001/health"]

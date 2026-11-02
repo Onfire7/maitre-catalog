@@ -1,0 +1,50 @@
+id: jellystat
+name: Jellystat
+summary: 'Statistics for Jellyfin: what is watched, by whom, how much, and library growth.'
+description: |
+  Jellystat watches a Jellyfin server and keeps its playback history: the most
+  watched films and series, each user's activity, and how the libraries grow. On
+  the first visit create its account, then point it at Jellyfin by Service name,
+  http://jellyfin:8096, with an API key from Jellyfin's dashboard.
+icon: icon.svg
+category: media
+version: 1.1.12
+project: https://github.com/CyferShepard/Jellystat
+exposure: private
+own_login: true
+web:
+  port: 3000
+  path: /
+  component: app
+volumes:
+  - name: backup_data
+    path: /app/backend/backup-data
+  - name: postgres_data
+    path: /var/lib/postgresql/data
+settings:
+  - key: JWT_SECRET
+    label: Session secret
+    type: password
+    default: generate
+  - key: POSTGRES_PASSWORD
+    label: Database password
+    type: password
+    default: generate
+health:
+  http: /
+components:
+  - name: app
+    image: docker.io/cyfershepard/jellystat:1.1.12@sha256:e61c759ec706da378bc8374e797da1dfd298ab30f804cefd82d192c301a888c7
+    after:
+      - db
+  - name: db
+    image: docker.io/library/postgres:15.19@sha256:40e8c839f86c404f9bd1c456bb83f11b205f2cd95d753b34c2d074e89ecee786
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/9196c7c34f9cb6ce801aa0fd8747c5356dd138fa/Apps/jellystat/docker-compose.yml
+  licence: MIT
+  converted: '2026-11-02'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/jellystat.svg

@@ -1,0 +1,51 @@
+id: healthchecks
+name: Healthchecks
+summary: 'Watches your scheduled jobs: each pings it on time, and you hear when one goes quiet.'
+description: |
+  Healthchecks gives each backup, cron job or script a URL to ping when it has run;
+  when a ping is late, it alerts you by email, ntfy, Gotify, Matrix, Telegram and
+  many more. Sign in with the administrator's email and the password made up at
+  install.
+icon: icon.svg
+category: tools
+image: docker.io/linuxserver/healthchecks:5.0.20261020@sha256:941ef825ead30253fd0571e94d66a98a85e65f46d99cd07f117033e28863e9e2
+version: 5.0.20261020
+project: https://github.com/healthchecks/healthchecks
+exposure: private
+own_login: true
+web:
+  port: 8000
+  path: /
+volumes:
+  - name: config
+    path: /config
+settings:
+  - key: SUPERUSER_EMAIL
+    label: Administrator email (the sign-in name)
+    type: text
+    default: admin@example.com
+  - key: SUPERUSER_PASSWORD
+    label: Administrator password
+    type: password
+    default: generate
+  - key: SECRET_KEY
+    label: Signing key
+    type: password
+    default: generate
+    format: hex
+    bytes: 32
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /api/v1/status/
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/9196c7c34f9cb6ce801aa0fd8747c5356dd138fa/Apps/healthchecks/docker-compose.yml
+  licence: MIT
+  converted: '2026-11-02'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/healthchecks.svg

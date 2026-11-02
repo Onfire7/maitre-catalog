@@ -1,0 +1,8 @@
+[Container]
+Image={{ .Image }}
+Exec=redis-server --requirepass {{ .Settings.REDIS_PASSWORD }}
+HealthInterval=1s
+HealthTimeout=3s
+HealthRetries=30
+Volume={{ .Volumes.redis }}:/data:Z
+HealthCmd=["redis-cli","ping"]

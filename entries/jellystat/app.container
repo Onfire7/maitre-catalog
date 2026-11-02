@@ -1,0 +1,8 @@
+[Container]
+Image={{ .Image }}
+Environment="JWT_SECRET={{ .Settings.JWT_SECRET }}"
+Environment=POSTGRES_IP=db
+Environment="POSTGRES_PASSWORD={{ .Settings.POSTGRES_PASSWORD }}"
+Environment=POSTGRES_PORT=5432
+Environment=POSTGRES_USER=postgres
+Volume={{ .Volumes.backup_data }}:/app/backend/backup-data:Z

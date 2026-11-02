@@ -1,0 +1,36 @@
+id: kitchenowl
+name: KitchenOwl
+summary: A shared grocery list and recipe book for the household, with meal planning.
+description: |
+  KitchenOwl is a shopping list the whole household edits at once, with recipes
+  that add their ingredients to it, a meal plan for the week, and expense
+  splitting. Create the first account on the first visit; there are mobile apps.
+icon: icon.svg
+category: tools
+image: docker.io/tombursch/kitchenowl:v0.7.10@sha256:bd821a41b8cb27fd7fcf429acd1fc67e9f889485a2cd1193d68c2d804a8e1bef
+version: 0.7.10
+project: https://github.com/TomBursch/kitchenowl
+exposure: private
+own_login: true
+web:
+  port: 8080
+  path: /
+volumes:
+  - name: data
+    path: /data
+settings:
+  - key: JWT_SECRET_KEY
+    label: Session secret
+    type: password
+    default: generate
+health:
+  http: /
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/9196c7c34f9cb6ce801aa0fd8747c5356dd138fa/Apps/kitchenowl/docker-compose.yml
+  licence: MIT
+  converted: '2026-11-02'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/kitchenowl.svg

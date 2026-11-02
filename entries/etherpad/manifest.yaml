@@ -1,0 +1,37 @@
+id: etherpad
+name: Etherpad
+summary: Write a document together in real time, each author's text in their own colour.
+description: |
+  Etherpad is a shared text editor: open a pad, send its link, and everyone types
+  in it at once, each in their own colour, with the history kept. Pads are open to
+  anyone who reaches the page; the admin page at /admin takes the user admin and
+  the password made up at install.
+icon: icon.svg
+category: tools
+image: docker.io/etherpad/etherpad:3.3.13@sha256:eab672b563d4355974f186de050ad203890a1ba6637cfff68764e5ad1bf9aca4
+version: 3.3.13
+project: https://github.com/ether/etherpad
+exposure: private
+own_login: false
+web:
+  port: 9001
+  path: /
+volumes:
+  - name: var
+    path: /opt/etherpad-lite/var
+settings:
+  - key: ADMIN_PASSWORD
+    label: Password of the admin page (user admin)
+    type: password
+    default: generate
+health:
+  http: /health
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/b14a0586a972c24b70da43a776ce6cd78b593f59/Apps/Etherpad/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-11-02'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/etherpad.svg

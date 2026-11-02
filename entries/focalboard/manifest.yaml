@@ -1,0 +1,32 @@
+id: focalboard
+name: Focalboard
+summary: Kanban boards, tables and calendars for projects, like Trello or Notion's boards.
+description: |
+  Focalboard is a project board: cards with properties, shown as a kanban, a
+  table, a gallery or a calendar, with templates for tasks, roadmaps and meeting
+  notes. Register the first account on the first visit. The project is community
+  maintained and moves slowly.
+icon: icon.svg
+category: tools
+image: docker.io/mattermost/focalboard:7.11.4@sha256:c935a2879dc7bcb8243a562afea21a30edbb6dbe029b53a9c0ae7ab4b3255c54
+version: 7.11.4
+project: https://github.com/mattermost-community/focalboard
+exposure: private
+own_login: true
+web:
+  port: 8000
+  path: /
+volumes:
+  - name: data
+    path: /opt/focalboard/data
+health:
+  http: /hello
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/9196c7c34f9cb6ce801aa0fd8747c5356dd138fa/Apps/focalboard/docker-compose.yml
+  licence: MIT
+  converted: '2026-11-02'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/focalboard.svg

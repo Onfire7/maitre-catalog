@@ -1,0 +1,7 @@
+[Container]
+Image={{ .Image }}
+Environment="DATABASE_URL=postgres://nocodb:{{ .Settings.DB_PASSWORD }}@db:5432/nocodb"
+Environment="NC_AUTH_JWT_SECRET={{ .Settings.NC_AUTH_JWT_SECRET }}"
+Environment="NC_REDIS_URL=redis://default:{{ .Settings.REDIS_PASSWORD }}@redis:6379"
+Environment="NC_PUBLIC_URL=http://{{ .Name }}.local"
+Volume={{ .Volumes.data }}:/usr/src/app/data:Z

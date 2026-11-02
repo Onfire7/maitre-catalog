@@ -1,0 +1,7 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment=HTTP_ALLOWED=true
+Environment="JWT_SECRET={{ .Settings.JWT_SECRET }}"
+Volume={{ .Volumes.data }}:/app/data:Z

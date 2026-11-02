@@ -1,0 +1,7 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment="JWT_SECRET_KEY={{ .Settings.JWT_SECRET_KEY }}"
+Environment="FRONT_URL=http://{{ .Name }}.local"
+Volume={{ .Volumes.data }}:/data:Z

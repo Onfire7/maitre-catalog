@@ -1,0 +1,38 @@
+id: wallos
+name: Wallos
+summary: 'Keeps track of your subscriptions: what they cost, when they renew, and the total per month.'
+description: |
+  Wallos is a subscription tracker: enter each subscription with its price, cycle,
+  payment method and category, and see what the month and the year cost, with
+  reminders before a renewal. Create the first account on the first visit.
+icon: icon.png
+category: tools
+image: docker.io/bellamy/wallos:5.10.4@sha256:78b73a32ae24bcca67d6f4b96ca76fe29ee8da5e8df1769df1e612a4e776c904
+version: 5.10.4
+project: https://github.com/ellite/Wallos
+exposure: private
+own_login: true
+web:
+  port: 80
+  path: /
+volumes:
+  - name: db
+    path: /var/www/html/db
+  - name: logos
+    path: /var/www/html/images/uploads/logos
+settings:
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/9196c7c34f9cb6ce801aa0fd8747c5356dd138fa/Apps/wallos/docker-compose.yml
+  licence: MIT
+  converted: '2026-11-02'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/png/wallos.png

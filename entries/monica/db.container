@@ -1,0 +1,7 @@
+[Container]
+Image={{ .Image }}
+Environment=MARIADB_DATABASE=monica
+Environment="MARIADB_PASSWORD={{ .Settings.DB_PASSWORD }}"
+Environment=MARIADB_RANDOM_ROOT_PASSWORD=true
+Environment=MARIADB_USER=monicauser
+Volume={{ .Volumes.mysql }}:/var/lib/mysql:Z

@@ -1,0 +1,7 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment="TZ={{ .Settings.TZ }}"
+Volume={{ .Volumes.db }}:/var/www/html/db:Z
+Volume={{ .Volumes.logos }}:/var/www/html/images/uploads/logos:Z

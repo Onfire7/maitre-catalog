@@ -1,0 +1,6 @@
+[Container]
+Image={{ .Image }}
+Environment=POSTGRES_DB=jfstat
+Environment="POSTGRES_PASSWORD={{ .Settings.POSTGRES_PASSWORD }}"
+Environment=POSTGRES_USER=postgres
+Volume={{ .Volumes.postgres_data }}:/var/lib/postgresql/data:Z
