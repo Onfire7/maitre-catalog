@@ -32,3 +32,4 @@ After the conversion, for the Catalog:
 - The summary and description are shorter, in the Catalog's words.
 - The components are named app and db, not after Big Bear's containers; the app reaches the database at db.
 - SECRET_KEY is made up at install, not the one written into the file.
+- The page is on port 80: Tandoor 2's image serves through its own nginx on TANDOOR_PORT, 80 unless set, and Big Bear's file published 8080 without setting it, so the entry proxied to a port nothing answered on (seen on a Node, 2026-11-02).

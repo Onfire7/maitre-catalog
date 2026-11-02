@@ -12,7 +12,7 @@ project: https://github.com/TandoorRecipes/recipes
 exposure: private
 own_login: true
 web:
-  port: 8080
+  port: 80
   path: /
   component: app
 volumes:
