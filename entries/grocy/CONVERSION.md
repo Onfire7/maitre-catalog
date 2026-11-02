@@ -20,3 +20,4 @@ Done differently from the Compose file; check they suit the app.
 After the conversion, for the Catalog:
 
 - The summary and description are shorter, in the Catalog's words.
+- The page is on port 80, the port LinuxServer's image listens on: Big Bear's file had the two sides of its mapping the wrong way round (target 9283, published 80), so the entry proxied to a port nothing answered on and every open was a 502 (fixed 2026-11-02).

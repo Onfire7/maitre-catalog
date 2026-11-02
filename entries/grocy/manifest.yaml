@@ -13,7 +13,7 @@ project: https://github.com/grocy/grocy
 exposure: private
 own_login: true
 web:
-  port: 9283
+  port: 80
   path: /
 volumes:
   - name: config
