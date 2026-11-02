@@ -22,3 +22,4 @@ After the conversion, for the Catalog:
 - The summary and description are shorter, in the Catalog's words.
 - The image is the newest plain release, 13.3.0, instead of 13.0.1-security-01, whose suffix would keep `maitre catalog outdated` from following new releases.
 - Health is its own /api/health.
+- Its own volumes mount with Podman's U option: the image runs as a user other than root, and the Node makes a Service's folders as root, so without it the app could not write them (seen on a Node with Vikunja, 2026-11-02).

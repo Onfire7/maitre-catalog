@@ -2,4 +2,4 @@
 Image={{ .Image }}
 ContainerName={{ .Name }}
 Network={{ .Network }}
-Volume={{ .Volumes.data }}:/opt/focalboard/data:Z
+Volume={{ .Volumes.data }}:/opt/focalboard/data:Z,U

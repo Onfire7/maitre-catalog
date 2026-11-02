@@ -53,6 +53,13 @@ source:                      # only for an entry converted or imported from else
 Volume names are also template fields (`{{ .Volumes.name }}`), so they hold
 lowercase letters, digits and underscores, no dashes.
 
+The Node makes a Service's own volume folders as root. An image that runs
+as another user (Vikunja's 1000, n8n's node, Grafana's 472) cannot write
+them, so such a component's own volumes mount with Podman's `U` option,
+`Volume={{ .Volumes.data }}:/data:Z,U`, which chowns the folder to the
+container's user at start. Shared folders (`:z`) are left as they are. The
+image's `config.User` says which images need it; a Compose file never does.
+
 ## Several containers
 
 An entry may run several containers, as a Compose file does. It then has no

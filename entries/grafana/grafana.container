@@ -2,4 +2,4 @@
 Image={{ .Image }}
 ContainerName={{ .Name }}
 Network={{ .Network }}
-Volume={{ .Volumes.data }}:/var/lib/grafana:Z
+Volume={{ .Volumes.data }}:/var/lib/grafana:Z,U

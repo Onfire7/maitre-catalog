@@ -19,3 +19,4 @@ Done differently from the Compose file; check they suit the app.
 After the conversion, for the Catalog:
 
 - The summary and description are shorter, in the Catalog's words.
+- Its own volumes mount with Podman's U option: the image runs as a user other than root, and the Node makes a Service's folders as root, so without it the app could not write them (seen on a Node with Vikunja, 2026-11-02).

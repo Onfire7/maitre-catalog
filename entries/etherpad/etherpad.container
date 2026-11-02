@@ -16,5 +16,5 @@ Environment=REQUIRE_AUTHORIZATION=false
 Environment=SHOW_SETTINGS_IN_ADMIN_PAGE=true
 Environment=TITLE=Etherpad
 Environment=TRUST_PROXY=true
-Volume={{ .Volumes.var }}:/opt/etherpad-lite/var:Z
+Volume={{ .Volumes.var }}:/opt/etherpad-lite/var:Z,U
 HealthCmd=["wget","-q","-O-","http://localhost:9001/health"]

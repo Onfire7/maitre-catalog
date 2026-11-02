@@ -29,3 +29,4 @@ After the conversion, for the Catalog:
 - ADMIN_PASSWORD is a setting made up at install, not the admin written into the file.
 - The default pad text no longer welcomes you to CasaOS.
 - Health is /health, the same the file's own check asked.
+- Its own volumes mount with Podman's U option: the image runs as a user other than root, and the Node makes a Service's folders as root, so without it the app could not write them (seen on a Node with Vikunja, 2026-11-02).

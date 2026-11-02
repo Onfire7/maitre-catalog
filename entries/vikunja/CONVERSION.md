@@ -33,3 +33,4 @@ After the conversion, for the Catalog:
 - The database's root password is made up at install (DB_ROOT_PASSWORD).
 - VIKUNJA_SERVICE_PUBLICURL is the Service's address on the home network, http://<name>.local/, instead of the file's placeholder.
 - Health is /api/v1/info.
+- Its own volumes mount with Podman's U option: the image runs as a user other than root, and the Node makes a Service's folders as root, so without it the app could not write them (seen on a Node with Vikunja, 2026-11-02).

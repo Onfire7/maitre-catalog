@@ -2,5 +2,5 @@
 Image={{ .Image }}
 ContainerName={{ .Name }}
 Network={{ .Network }}
-Volume={{ .Volumes.data }}:/srv/data:Z
-Volume={{ .Volumes.config }}:/srv/cfg:Z
+Volume={{ .Volumes.data }}:/srv/data:Z,U
+Volume={{ .Volumes.config }}:/srv/cfg:Z,U

@@ -39,3 +39,4 @@ After the conversion, for the Catalog:
 - The demo administrator (demo@demo.demo, password demo) is replaced by settings: email, username and name asked at install, and a password made up at install.
 - BASE_URL is the Service's address on the home network, http://<name>.local, instead of the file's placeholder; Planka builds the links in its emails and attachments from it.
 - Health is /.
+- Its own volumes mount with Podman's U option: the image runs as a user other than root, and the Node makes a Service's folders as root, so without it the app could not write them (seen on a Node with Vikunja, 2026-11-02).

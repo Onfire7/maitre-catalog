@@ -2,4 +2,4 @@
 Image={{ .Image }}
 ContainerName={{ .Name }}
 Network={{ .Network }}
-Volume={{ .Volumes.data }}:/data:Z
+Volume={{ .Volumes.data }}:/data:Z,U

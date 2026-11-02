@@ -7,5 +7,5 @@ HealthTimeout=10s
 HealthRetries=3
 HealthStartPeriod=40s
 Environment=NODE_ENV=production
-Volume={{ .Volumes.user_data }}:/app/user-data:Z
+Volume={{ .Volumes.user_data }}:/app/user-data:Z,U
 HealthCmd=["node","/app/services/healthcheck.js"]
