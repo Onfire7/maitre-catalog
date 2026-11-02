@@ -1,0 +1,64 @@
+id: linkwarden
+name: Linkwarden
+summary: Bookmarks that keep a copy of every page, with tags, collections and full-text search.
+description: |
+  Linkwarden saves a link with a screenshot, a PDF and the page's text, so it still
+  reads when the site is gone, and organises links into collections and tags that
+  can be shared. Register the first account on the first visit; it has browser
+  extensions and a mobile app.
+icon: icon.png
+category: tools
+version: 2.16.3
+project: https://github.com/linkwarden/linkwarden
+exposure: private
+own_login: true
+web:
+  port: 3000
+  path: /
+  component: app
+volumes:
+  - name: data
+    path: /data/data
+  - name: meili_data
+    path: /meili_data
+  - name: pgdata
+    path: /var/lib/postgresql/data
+settings:
+  - key: NEXTAUTH_SECRET
+    label: Session secret
+    type: password
+    default: generate
+  - key: DB_PASSWORD
+    label: Database password
+    type: password
+    default: generate
+  - key: MEILI_MASTER_KEY
+    label: Search index key
+    type: password
+    default: generate
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /api/v1/logins
+components:
+  - name: app
+    image: ghcr.io/linkwarden/linkwarden:v2.16.3@sha256:0664c28a039bda8ffa6663389e8536b2fc717219e329f85b83faca7efed3b144
+    after:
+      - search
+      - db
+  - name: search
+    image: docker.io/getmeili/meilisearch:v1.56.1@sha256:b7ba431bf6f9b26cc86132798f3640964147a699cf23f026b74c6c05dbb1d60d
+  - name: db
+    image: docker.io/library/postgres:16-alpine@sha256:0cefaabd882e42bcb2a2f3dc56d3ce4770560ba62fd7f197f1a2e008fd5731ab
+    wait_healthy: true
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/b14a0586a972c24b70da43a776ce6cd78b593f59/Apps/Linkwarden/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-11-02'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/png/linkwarden.png

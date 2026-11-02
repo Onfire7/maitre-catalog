@@ -1,0 +1,7 @@
+[Container]
+Image={{ .Image }}
+Environment="APP_SECRET={{ .Settings.APP_SECRET }}"
+Environment="APP_URL=http://{{ .Name }}.local"
+Environment="DATABASE_URL=postgresql://docmost:{{ .Settings.DB_PASSWORD }}@db:5432/docmost?schema=public"
+Environment=REDIS_URL=redis://redis:6379/0
+Volume={{ .Volumes.storage }}:/app/data/storage:Z

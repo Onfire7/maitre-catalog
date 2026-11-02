@@ -1,0 +1,6 @@
+[Container]
+Image={{ .Image }}
+Environment=POSTGRES_DB=docmost
+Environment="POSTGRES_PASSWORD={{ .Settings.DB_PASSWORD }}"
+Environment=POSTGRES_USER=docmost
+Volume={{ .Volumes.pgdata }}:/var/lib/postgresql/data:Z

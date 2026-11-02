@@ -1,0 +1,12 @@
+[Container]
+Image={{ .Image }}
+Environment="DATABASE_URL=postgresql://postgres:{{ .Settings.DB_PASSWORD }}@db:5432/linkwarden"
+Environment=MEILI_HOST=http://search:7700
+Environment="MEILI_MASTER_KEY={{ .Settings.MEILI_MASTER_KEY }}"
+Environment="NEXTAUTH_SECRET={{ .Settings.NEXTAUTH_SECRET }}"
+Environment="NEXTAUTH_URL=http://{{ .Name }}.local/api/v1/auth"
+Environment=NEXT_PUBLIC_CREDENTIALS_ENABLED=true
+Environment=NEXT_PUBLIC_DISABLE_REGISTRATION=false
+Environment=STORAGE_FOLDER=/data
+Environment="TZ={{ .Settings.TZ }}"
+Volume={{ .Volumes.data }}:/data/data:Z

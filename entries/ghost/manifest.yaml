@@ -1,0 +1,49 @@
+id: ghost
+name: Ghost
+summary: Publish a blog or newsletter, with members and paid subscriptions.
+description: |
+  Ghost is a publishing platform for a blog, a magazine or a newsletter, with an
+  editor, themes, members and paid subscriptions. Create the owner account at
+  /ghost on the first visit.
+icon: icon.png
+category: tools
+version: 6.73.0
+project: https://github.com/TryGhost/Ghost
+exposure: private
+own_login: true
+web:
+  port: 2368
+  path: /
+  component: app
+volumes:
+  - name: content
+    path: /var/lib/ghost/content
+  - name: mysql
+    path: /var/lib/mysql
+settings:
+  - key: DB_PASSWORD
+    label: Database password
+    type: password
+    default: generate
+  - key: DB_ROOT_PASSWORD
+    label: Database administrator password
+    type: password
+    default: generate
+health:
+  http: /ghost/api/admin/site/
+components:
+  - name: app
+    image: docker.io/library/ghost:6.73.0-alpine@sha256:4195f6c405e40230cd10c0770425cf500c1f542a96e9f6584c11649c150e5a89
+    after:
+      - db
+  - name: db
+    image: docker.io/library/mysql:8.4@sha256:a0225d1ea6631c8bc2385dc4c2faba17bbf1834ecf369e1659a9a382bd8d5dd7
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/9196c7c34f9cb6ce801aa0fd8747c5356dd138fa/Apps/ghost/docker-compose.yml
+  licence: MIT
+  converted: '2026-11-02'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/png/ghost.png

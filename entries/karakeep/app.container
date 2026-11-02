@@ -1,0 +1,10 @@
+[Container]
+Image={{ .Image }}
+Environment=BROWSER_WEB_URL=http://chrome:9222
+Environment=DATA_DIR=/data
+Environment=MEILI_ADDR=http://search:7700
+Environment="MEILI_MASTER_KEY={{ .Settings.MEILI_MASTER_KEY }}"
+Environment="NEXTAUTH_SECRET={{ .Settings.NEXTAUTH_SECRET }}"
+Environment="NEXTAUTH_URL=http://{{ .Name }}.local"
+Environment="OPENAI_API_KEY={{ .Settings.OPENAI_API_KEY }}"
+Volume={{ .Volumes.data }}:/data:Z

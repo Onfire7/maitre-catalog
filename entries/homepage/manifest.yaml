@@ -1,0 +1,31 @@
+id: homepage
+name: Homepage
+summary: 'A start page for your home: links to every Service, with live status from the ones it knows.'
+description: |
+  Homepage is a dashboard of your Services and bookmarks, with widgets that show
+  what each one is doing, the weather and the time. It is set up by editing the YAML
+  files in its config volume.
+icon: icon.png
+category: tools
+image: ghcr.io/gethomepage/homepage:v2.7.0@sha256:19c5c09184458a41b7b5915e71463a39f36cd33540f41bdbed008791b8182d5f
+version: 2.7.0
+project: https://github.com/gethomepage/homepage
+exposure: private
+own_login: false
+web:
+  port: 3000
+  path: /
+volumes:
+  - name: config
+    path: /app/config
+health:
+  http: /api/healthcheck
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/9196c7c34f9cb6ce801aa0fd8747c5356dd138fa/Apps/homepage/docker-compose.yml
+  licence: MIT
+  converted: '2026-11-02'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/png/homepage.png

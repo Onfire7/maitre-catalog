@@ -1,0 +1,9 @@
+[Container]
+Image={{ .Image }}
+Environment=database__client=mysql
+Environment=database__connection__database=ghost
+Environment=database__connection__host=db
+Environment="database__connection__password={{ .Settings.DB_PASSWORD }}"
+Environment=database__connection__user=ghost
+Environment="url=http://{{ .Name }}.local"
+Volume={{ .Volumes.content }}:/var/lib/ghost/content:Z

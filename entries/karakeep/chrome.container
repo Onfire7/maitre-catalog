@@ -1,0 +1,4 @@
+[Container]
+Image={{ .Image }}
+RunInit=true
+Exec='--disable-gpu' '--disable-dev-shm-usage' '--hide-scrollbars' '--disable-blink-features=AutomationControlled' '--window-size=1440,900'

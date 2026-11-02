@@ -1,0 +1,14 @@
+[Container]
+Image={{ .Image }}
+Environment="BASE_URL=http://{{ .Name }}.local"
+Environment="DATABASE_URL=postgresql://postgres:{{ .Settings.DB_PASSWORD }}@db/planka"
+Environment="DEFAULT_ADMIN_EMAIL={{ .Settings.ADMIN_EMAIL }}"
+Environment="DEFAULT_ADMIN_NAME={{ .Settings.ADMIN_NAME }}"
+Environment="DEFAULT_ADMIN_PASSWORD={{ .Settings.ADMIN_PASSWORD }}"
+Environment="DEFAULT_ADMIN_USERNAME={{ .Settings.ADMIN_USERNAME }}"
+Environment="SECRET_KEY={{ .Settings.SECRET_KEY }}"
+Volume={{ .Volumes.data }}:/app/data:Z
+Volume={{ .Volumes.background_images }}:/app/public/background-images:Z
+Volume={{ .Volumes.user_avatars }}:/app/public/user-avatars:Z
+Volume={{ .Volumes.project_background_images }}:/app/public/project-background-images:Z
+Volume={{ .Volumes.attachments }}:/app/private/attachments:Z

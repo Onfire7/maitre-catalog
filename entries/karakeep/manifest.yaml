@@ -1,0 +1,57 @@
+id: karakeep
+name: Karakeep
+summary: Save links, notes, images and PDFs; it fetches a preview and tags them for you.
+description: |
+  Karakeep keeps everything you want to read later in one library, fetches each
+  page's title and preview with its own headless Chrome, and searches the full
+  text. With an OpenAI key it also tags and summarises what you save. Register the
+  first account on the first visit; there are browser extensions and mobile apps.
+icon: icon.svg
+category: tools
+version: 0.34.1
+project: https://github.com/karakeep-app/karakeep
+exposure: private
+own_login: true
+web:
+  port: 3000
+  path: /
+  component: app
+volumes:
+  - name: data
+    path: /data
+  - name: meilisearch
+    path: /meili_data
+settings:
+  - key: NEXTAUTH_SECRET
+    label: Session secret
+    type: password
+    default: generate
+  - key: MEILI_MASTER_KEY
+    label: Search index key
+    type: password
+    default: generate
+  - key: OPENAI_API_KEY
+    label: OpenAI API key, for automatic tagging (leave empty for none)
+    type: password
+    default: ''
+health:
+  http: /api/health
+components:
+  - name: app
+    image: ghcr.io/karakeep-app/karakeep:0.34.1@sha256:69ae5315c618b7c14c1af3e34c6e211acdb231793af424ecd1cab0b70691d987
+    after:
+      - chrome
+      - search
+  - name: chrome
+    image: ghcr.io/karakeep-app/karakeep-chrome:release@sha256:49b5eaf63cac3b6ad6a28b2ce0cd421486f440a49db41221af6c1b3229d139bd
+  - name: search
+    image: docker.io/getmeili/meilisearch:v1.56.1@sha256:b7ba431bf6f9b26cc86132798f3640964147a699cf23f026b74c6c05dbb1d60d
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/b14a0586a972c24b70da43a776ce6cd78b593f59/Apps/Karakeep/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-11-02'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/karakeep.svg

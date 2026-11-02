@@ -1,0 +1,5 @@
+[Container]
+Image={{ .Image }}
+Environment="APP_SECRET={{ .Settings.APP_SECRET }}"
+Environment=DATABASE_TYPE=postgresql
+Environment="DATABASE_URL=postgresql://umami:{{ .Settings.DB_PASSWORD }}@db:5432/umami"

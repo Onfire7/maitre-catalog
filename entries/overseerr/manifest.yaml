@@ -1,0 +1,45 @@
+id: overseerr
+name: Overseerr
+summary: Lets your household request films and series, and sends the requests to Sonarr and Radarr.
+description: |
+  Overseerr is a request page for a Plex library: people browse and ask for a film or
+  a series, and approved requests go to Radarr and Sonarr. Sign in with the Plex
+  account that owns the server, then connect Plex, Radarr and Sonarr by their
+  Service names.
+icon: icon.svg
+category: media
+image: docker.io/linuxserver/overseerr:1.35.0@sha256:6108ed066d4a919c05251d9dab041c1e55e67ff7247e7b31be97b65ffcbaeeb1
+version: 1.35.0
+project: https://github.com/sct/overseerr
+exposure: private
+own_login: true
+web:
+  port: 5055
+  path: /
+volumes:
+  - name: config
+    path: /config
+settings:
+  - key: PGID
+    label: 'Container Variable: PGID'
+    type: text
+    default: '1000'
+  - key: PUID
+    label: 'Container Variable: PUID'
+    type: text
+    default: '1000'
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+health:
+  http: /api/v1/status
+source:
+  from: casaos
+  url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/b14a0586a972c24b70da43a776ce6cd78b593f59/Apps/Overseerr/docker-compose.yml
+  licence: Apache-2.0
+  converted: '2026-11-02'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/overseerr.svg

@@ -1,0 +1,7 @@
+[Container]
+Image={{ .Image }}
+Environment=WORDPRESS_DB_HOST=db
+Environment=WORDPRESS_DB_NAME=wordpress
+Environment="WORDPRESS_DB_PASSWORD={{ .Settings.DB_PASSWORD }}"
+Environment=WORDPRESS_DB_USER=wordpress
+Volume={{ .Volumes.html }}:/var/www/html:Z

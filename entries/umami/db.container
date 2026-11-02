@@ -1,0 +1,10 @@
+[Container]
+Image={{ .Image }}
+HealthInterval=5s
+HealthTimeout=5s
+HealthRetries=5
+Environment=POSTGRES_DB=umami
+Environment="POSTGRES_PASSWORD={{ .Settings.DB_PASSWORD }}"
+Environment=POSTGRES_USER=umami
+Volume={{ .Volumes.pgdata }}:/var/lib/postgresql/data:Z
+HealthCmd=pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}

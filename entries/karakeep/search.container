@@ -1,0 +1,5 @@
+[Container]
+Image={{ .Image }}
+Environment="MEILI_MASTER_KEY={{ .Settings.MEILI_MASTER_KEY }}"
+Environment=MEILI_NO_ANALYTICS=true
+Volume={{ .Volumes.meilisearch }}:/meili_data:Z

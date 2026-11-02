@@ -152,8 +152,10 @@ An entry is known to work when CI has:
 
 `<id>.container` is a Podman Quadlet `[Container]` unit with Go template
 fields. The agent supplies `.Image`, `.Name`, `.Volumes` (name → host path),
-`.Settings`, `.Network` and `.Env`. Entries should keep the template short
-and let the agent add `[Service]`/`[Install]` sections.
+`.Settings`, `.Network` and `.Env`. `.Name` is the Service's name in every
+template, a component's included, so an app's own address is
+`http://{{ .Name }}.local`. Entries should keep the template short and let
+the agent add `[Service]`/`[Install]` sections.
 
 ## Popularity
 

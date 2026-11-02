@@ -1,0 +1,54 @@
+id: docmost
+name: Docmost
+summary: A wiki and documentation space, written together in real time, like Notion or Confluence.
+description: |
+  Docmost holds pages in spaces, edited by several people at once, with comments,
+  diagrams, attachments and search. The first visit creates the workspace and
+  its owner account.
+icon: icon.png
+category: tools
+version: 0.97.0
+project: https://github.com/docmost/docmost
+exposure: private
+own_login: true
+web:
+  port: 3000
+  path: /
+  component: app
+volumes:
+  - name: pgdata
+    path: /var/lib/postgresql/data
+  - name: redis
+    path: /data
+  - name: storage
+    path: /app/data/storage
+settings:
+  - key: APP_SECRET
+    label: Application secret
+    type: password
+    default: generate
+  - key: DB_PASSWORD
+    label: Database password
+    type: password
+    default: generate
+health:
+  http: /api/health
+components:
+  - name: app
+    image: docker.io/docmost/docmost:0.97.0@sha256:40c454d74ffdd9ecb15833e4d96f3a630d59aad862a1869381ae6ee086454419
+    after:
+      - db
+      - redis
+  - name: db
+    image: docker.io/library/postgres:16-alpine@sha256:0cefaabd882e42bcb2a2f3dc56d3ce4770560ba62fd7f197f1a2e008fd5731ab
+  - name: redis
+    image: docker.io/library/redis:7.4.12-alpine@sha256:8da19c7399dca900c6822a1cf30f9d2285585e2c4b457ff4095b0f4500054d3f
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/9196c7c34f9cb6ce801aa0fd8747c5356dd138fa/Apps/docmost/docker-compose.yml
+  licence: MIT
+  converted: '2026-11-02'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/png/docmost.png

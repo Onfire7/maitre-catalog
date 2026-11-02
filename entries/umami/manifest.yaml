@@ -1,0 +1,48 @@
+id: umami
+name: Umami
+summary: Simple, private web analytics for your sites, instead of Google Analytics.
+description: |
+  Umami counts the visits to your websites without cookies or personal data, and
+  shows them on one dashboard. Sign in as admin with the password umami, then
+  change it and add a website to get its tracking script.
+icon: icon.svg
+category: tools
+version: 3.4.1
+project: https://github.com/umami-software/umami
+exposure: private
+own_login: true
+web:
+  port: 3000
+  path: /
+  component: app
+volumes:
+  - name: pgdata
+    path: /var/lib/postgresql/data
+settings:
+  - key: APP_SECRET
+    label: Application secret
+    type: password
+    default: generate
+  - key: DB_PASSWORD
+    label: Database password
+    type: password
+    default: generate
+health:
+  http: /api/heartbeat
+components:
+  - name: app
+    image: ghcr.io/umami-software/umami:3.4.1@sha256:e69d1a7932e9dab0fc523edc7be1f3a53f3c261f57856fc2167ae74a8fc022e8
+    after:
+      - db
+  - name: db
+    image: docker.io/library/postgres:15-alpine@sha256:54e0dd8e8cddcdbb9156c2486eed5a43eccb7214d7c6828097d41ce049fb3984
+    wait_healthy: true
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/9196c7c34f9cb6ce801aa0fd8747c5356dd138fa/Apps/umami/docker-compose.yml
+  licence: MIT
+  converted: '2026-11-02'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/umami.svg

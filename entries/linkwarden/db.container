@@ -1,0 +1,11 @@
+[Container]
+Image={{ .Image }}
+HealthInterval=10s
+HealthTimeout=5s
+HealthRetries=10
+Environment=POSTGRES_DB=linkwarden
+Environment="POSTGRES_PASSWORD={{ .Settings.DB_PASSWORD }}"
+Environment=POSTGRES_USER=postgres
+Environment="TZ={{ .Settings.TZ }}"
+Volume={{ .Volumes.pgdata }}:/var/lib/postgresql/data:Z
+HealthCmd=pg_isready -U postgres -d linkwarden

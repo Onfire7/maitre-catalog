@@ -1,0 +1,5 @@
+[Container]
+Image={{ .Image }}
+Environment=MEILI_ENV=production
+Environment="MEILI_MASTER_KEY={{ .Settings.MEILI_MASTER_KEY }}"
+Volume={{ .Volumes.meili_data }}:/meili_data:Z

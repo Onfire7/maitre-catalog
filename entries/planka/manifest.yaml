@@ -1,0 +1,76 @@
+id: planka
+name: Planka
+summary: 'Kanban boards for a team or a household: projects, lists, cards, labels and due dates.'
+description: |
+  Planka is a Trello-like board: projects hold boards of lists and cards, with
+  members, labels, due dates, attachments and comments. Sign in with the
+  administrator account made at install.
+icon: icon.svg
+category: tools
+version: 2.2.1
+project: https://github.com/plankanban/planka
+exposure: private
+own_login: true
+web:
+  port: 1337
+  path: /
+  component: app
+volumes:
+  - name: attachments
+    path: /app/private/attachments
+  - name: background_images
+    path: /app/public/background-images
+  - name: data
+    path: /app/data
+  - name: postgresql
+    path: /var/lib/postgresql/data
+  - name: project_background_images
+    path: /app/public/project-background-images
+  - name: user_avatars
+    path: /app/public/user-avatars
+settings:
+  - key: ADMIN_EMAIL
+    label: Administrator email
+    type: text
+    default: admin@example.com
+  - key: ADMIN_USERNAME
+    label: Administrator username
+    type: text
+    default: admin
+  - key: ADMIN_NAME
+    label: Administrator name
+    type: text
+    default: Administrator
+  - key: ADMIN_PASSWORD
+    label: Administrator password
+    type: password
+    default: generate
+  - key: SECRET_KEY
+    label: Session key
+    type: password
+    default: generate
+    format: hex
+    bytes: 64
+  - key: DB_PASSWORD
+    label: Database password
+    type: password
+    default: generate
+health:
+  http: /
+components:
+  - name: app
+    image: ghcr.io/plankanban/planka:2.2.1@sha256:125f45330853210c678fed1132bedc0912b4a11a27779b79802fbca108e069e2
+    after:
+      - db
+  - name: db
+    image: docker.io/library/postgres:14-alpine@sha256:862ffc2556a2db763f0439c8323490000cd01975d2798a845e4a8dd3a905862f
+    wait_healthy: true
+source:
+  from: casaos
+  url: https://github.com/bigbeartechworld/big-bear-casaos/blob/9196c7c34f9cb6ce801aa0fd8747c5356dd138fa/Apps/planka-v2/docker-compose.yml
+  licence: MIT
+  converted: '2026-11-02'
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/planka.svg

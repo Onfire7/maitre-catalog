@@ -1,0 +1,7 @@
+[Container]
+Image={{ .Image }}
+Environment=MYSQL_DATABASE=wordpress
+Environment="MYSQL_PASSWORD={{ .Settings.DB_PASSWORD }}"
+Environment="MYSQL_ROOT_PASSWORD={{ .Settings.DB_ROOT_PASSWORD }}"
+Environment=MYSQL_USER=wordpress
+Volume={{ .Volumes.mysql }}:/var/lib/mysql:Z

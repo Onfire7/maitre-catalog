@@ -1,0 +1,6 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+Environment=HOMEPAGE_ALLOWED_HOSTS=*
+Volume={{ .Volumes.config }}:/app/config:Z
