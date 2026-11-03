@@ -1,5 +1,6 @@
 [Container]
 Image={{ .Image }}
+Environment=ALLOWED_HOSTS=*
 Environment=DB_ENGINE=django.db.backends.postgresql
 Environment=POSTGRES_DB=tandoordb
 Environment=POSTGRES_HOST=db
