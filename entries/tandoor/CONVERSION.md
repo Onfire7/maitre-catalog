@@ -33,3 +33,4 @@ After the conversion, for the Catalog:
 - The components are named app and db, not after Big Bear's containers; the app reaches the database at db.
 - SECRET_KEY is made up at install, not the one written into the file.
 - The page is on port 80: Tandoor 2's image serves through its own nginx on TANDOOR_PORT, 80 unless set, and Big Bear's file published 8080 without setting it, so the entry proxied to a port nothing answered on (seen on a Node, 2026-11-02).
+- The database's health check asks as the tandoor role for the tandoordb database: pg_isready without -U asks as the container's own user, root, and Postgres logged "FATAL: role "root" does not exist" every ten seconds on a Node (2026-11-03); the database name is tandoordb, not tandoor, as POSTGRES_DB has it.

@@ -9,4 +9,4 @@ Environment="POSTGRES_PASSWORD={{ .Settings.POSTGRES_PASSWORD }}"
 Environment=POSTGRES_PORT=5432
 Environment=POSTGRES_USER=tandoor
 Volume={{ .Volumes.postgresql }}:/var/lib/postgresql/data:Z
-HealthCmd=pg_isready -d tandoor
+HealthCmd=pg_isready -U tandoor -d tandoordb
