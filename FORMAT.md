@@ -25,6 +25,19 @@ port_forward: false          # true: the app is meant to be reached from the int
 web:                         # the page the Console opens; omit for headless apps
   port: 8096
   path: /
+pages:                       # instead of web, for an app with several pages (ADR 0010):
+  - name: web                # the first is the Service's own, at <service>.local
+    port: 8096
+    path: /
+  - name: admin              # the others at <service>-<name>.local
+    label: Admin             # what the sidebar calls it
+    port: 8097
+    health: /ping            # probed for health; the page's path if omitted
+ports:                       # ports other Services may use beyond the pages' (a database,
+  - 5432/tcp                 # MQTT); reachable from the Fleet's other Nodes once the
+                             # person turns "Reachable by other Services" on in Setup
+tunnel: false                # true: the app only carries other Services' traffic (a VPN
+                             # client); other Services can join its network in their Setup
 volumes:                     # named data dirs; placed at <pool>/<service>/<name>
   - name: config
     path: /config
