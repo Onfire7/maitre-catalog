@@ -1,0 +1,17 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+AddDevice=/dev/net/tun
+AddCapability=NET_ADMIN
+Environment="VPN_SERVICE_PROVIDER={{ .Settings.VPN_SERVICE_PROVIDER }}"
+Environment="VPN_TYPE={{ .Settings.VPN_TYPE }}"
+Environment="WIREGUARD_PRIVATE_KEY={{ .Settings.WIREGUARD_PRIVATE_KEY }}"
+Environment="WIREGUARD_ADDRESSES={{ .Settings.WIREGUARD_ADDRESSES }}"
+Environment="OPENVPN_USER={{ .Settings.OPENVPN_USER }}"
+Environment="OPENVPN_PASSWORD={{ .Settings.OPENVPN_PASSWORD }}"
+Environment="SERVER_COUNTRIES={{ .Settings.SERVER_COUNTRIES }}"
+Environment="FIREWALL_OUTBOUND_SUBNETS={{ .Settings.FIREWALL_OUTBOUND_SUBNETS }}"
+Environment="DNS_KEEP_NAMESERVER={{ .Settings.DNS_KEEP_NAMESERVER }}"
+Environment="TZ={{ .Settings.TZ }}"
+Volume={{ .Volumes.config }}:/gluetun:Z

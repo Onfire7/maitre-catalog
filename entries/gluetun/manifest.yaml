@@ -1,0 +1,78 @@
+id: gluetun
+name: Gluetun
+summary: A VPN client other Services send their traffic through.
+description: |
+  Gluetun connects to your VPN provider and carries the traffic of every
+  Service you put on it. Such a Service reaches the internet only through
+  the VPN: when the connection drops its traffic stops rather than going out
+  in the open, and its own pages stay where they were in the Console.
+
+  It has no page of its own. Give it your provider and its keys; until they
+  are right it keeps restarting, and its logs say what is missing. Put a
+  Service on it from that Service's Setup, under Network.
+
+  Gluetun resolves names itself, over the VPN, so a Service on it does not
+  see the Fleet's own names (<service>.local) unless you turn that on below,
+  which sends its name lookups through your home network instead of the VPN.
+icon: icon.svg
+category: network
+image: docker.io/qmcgaw/gluetun:v3.41.3@sha256:fa19cc76b2af13d57a8d3dc3066f2ada061b1c761b8aecf989b3877c0486e027
+version: "3.41.3"
+project: https://github.com/passteque/gluetun
+exposure: private
+tunnel: true
+volumes:
+  - name: config
+    path: /gluetun
+settings:
+  - key: VPN_SERVICE_PROVIDER
+    label: 'Your VPN provider, as Gluetun names it: mullvad, protonvpn, nordvpn, surfshark, airvpn, ivpn, windscribe, private internet access, and others its wiki lists'
+    type: text
+    default: ''
+  - key: VPN_TYPE
+    label: wireguard or openvpn, whichever your provider gave you
+    type: text
+    default: wireguard
+  - key: WIREGUARD_PRIVATE_KEY
+    label: WireGuard private key, from your provider
+    type: password
+    default: ''
+  - key: WIREGUARD_ADDRESSES
+    label: The address your provider gave that key, such as 10.64.0.2/32
+    type: text
+    default: ''
+  - key: OPENVPN_USER
+    label: OpenVPN user name, if you chose openvpn
+    type: text
+    default: ''
+  - key: OPENVPN_PASSWORD
+    label: OpenVPN password, if you chose openvpn
+    type: password
+    default: ''
+  - key: SERVER_COUNTRIES
+    label: Countries to pick a server in, comma separated; empty means any
+    type: text
+    default: ''
+  - key: FIREWALL_OUTBOUND_SUBNETS
+    label: Your home network, such as 192.168.1.0/24, if you reach a Service on this Tunnel from another machine on it; leave empty otherwise
+    type: text
+    default: ''
+  - key: DNS_KEEP_NAMESERVER
+    label: Let a Service on this Tunnel use the Fleet's names (<service>.local). Its name lookups then go through your home network, not the VPN.
+    type: bool
+    default: 'false'
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+grants:
+  - option: AddDevice=/dev/net/tun
+    why: Makes the network device the encrypted tunnel runs over. Without it there is nothing to carry the traffic, so every VPN client needs it.
+  - option: AddCapability=NET_ADMIN
+    why: Sets the routes and the firewall inside its own container, which is what keeps a Service on the Tunnel from reaching the internet any other way.
+source:
+  from: hand
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/38631ad11695467d7a9e432d5fdec7a39a31e75f/svg/gluetun.svg

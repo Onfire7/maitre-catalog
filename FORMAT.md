@@ -225,8 +225,9 @@ feature off, a declared one is not used, or Maître does not support the
 option yet; the message says what support it needs. Supported today:
 `Network=host` (single-container entries; the page is served on its own port
 of the Node, and is open to the home network there), GPUs (`AddDevice` of
-`/dev/dri`), `AddCapability`, `Sysctl`, `UserNS`, `NoNewPrivileges=false`,
-and folders of the Node other than the Podman socket and `/run/dbus`.
+`/dev/dri`), the tunnel device every Tunnel needs (`AddDevice=/dev/net/tun`),
+`AddCapability`, `Sysctl`, `UserNS`, `NoNewPrivileges=false`, and folders of
+the Node other than the Podman socket and `/run/dbus`.
 
 ## Device settings
 
