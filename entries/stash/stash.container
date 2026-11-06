@@ -1,0 +1,19 @@
+[Container]
+Image={{ .Image }}
+ContainerName={{ .Name }}
+Network={{ .Network }}
+LogDriver=json-file
+LogOpt=max-file=10
+LogOpt=max-size=2m
+Environment=STASH_CACHE=/cache/
+Environment=STASH_GENERATED=/generated/
+Environment=STASH_METADATA=/metadata/
+Environment=STASH_PORT=9999
+Environment=STASH_STASH=/data/
+Environment="TZ={{ .Settings.TZ }}"
+Volume={{ .Volumes.config }}:/root/.stash:Z
+Volume={{ .Volumes.collection }}:/data:z
+Volume={{ .Volumes.metadata }}:/metadata:Z
+Volume={{ .Volumes.cache }}:/cache:Z
+Volume={{ .Volumes.blobs }}:/blobs:Z
+Volume={{ .Volumes.generated }}:/generated:Z

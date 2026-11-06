@@ -87,6 +87,7 @@ dashboard-icons by Homarr Labs (https://github.com/homarr-labs/dashboard-icons),
   sabnzbd: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/sabnzbd.svg
   sonarr: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/sonarr.svg
   speedtest-tracker: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/png/speedtest-tracker.png
+  stash: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/59f1e9a4108f4f510f41e9588f078631de1e1405/svg/stash.svg
   stirling-pdf: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/stirling-pdf.svg
   syncthing: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/syncthing.svg
   tandoor: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/83f32e08257b66fbd971ac8d7645f5b38d52e85d/svg/tandoor-recipes.svg
@@ -199,6 +200,9 @@ CasaOS AppStore by IceWhale Technology (https://github.com/IceWhaleTech/CasaOS-A
   trilium: converted from https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Trilium/docker-compose.yml, Apache-2.0
   vaultwarden: converted from https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Vaultwarden/docker-compose.yml, Apache-2.0
   wallabag: converted from https://github.com/IceWhaleTech/CasaOS-AppStore/blob/9619b7090994557756e9b4f6f439d0c3deda4e2e/Apps/Wallabag/docker-compose.yml, Apache-2.0
+
+From projects' own Compose files, each under the licence named:
+  stash: converted from https://raw.githubusercontent.com/stashapp/stash/v0.32.0/docker/production/docker-compose.yml, AGPL-3.0
 
 Each converted entry's CONVERSION.md says what was changed from the file it
 came from. The licences' texts are in LICENSES/.

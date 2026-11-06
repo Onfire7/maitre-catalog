@@ -1,0 +1,54 @@
+id: stash
+name: Stash
+summary: Organize, tag and browse a private video and image collection, including adult content.
+description: |
+  Stash scans a collection of videos and images, fills in titles, performers,
+  studios and tags from community metadata sources, and makes thumbnails,
+  previews and transcodes so it plays in any browser.
+
+  For its collection, pick the shared folder that holds your videos and
+  images, so you can add files from Files. On first open, setup asks where
+  things go: choose /data for the collection, and keep /generated, /metadata,
+  /cache and /blobs for the rest. Stash has no login until you set one under Settings, Security.
+category: media
+image: docker.io/stashapp/stash:v0.32.0@sha256:1099ffd7cc53f165916a07644874448011308a46eadbcd4edd328786e59b5eb9
+version: "0.32.0"
+exposure: private
+web:
+  port: 9999
+  path: /
+volumes:
+  - name: blobs
+    path: /blobs
+    size: medium
+  - name: cache
+    path: /cache
+  - name: config
+    path: /root/.stash
+  - name: collection
+    path: /data
+    size: large
+    shared: true
+  - name: generated
+    path: /generated
+    size: large
+  - name: metadata
+    path: /metadata
+health:
+  http: /
+settings:
+  - key: TZ
+    label: Time zone
+    type: timezone
+    default: auto
+source:
+  from: compose
+  url: https://raw.githubusercontent.com/stashapp/stash/v0.32.0/docker/production/docker-compose.yml
+  licence: AGPL-3.0
+  converted: "2026-11-06"
+  icon:
+    pack: dashboard-icons
+    licence: Apache-2.0
+    url: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/59f1e9a4108f4f510f41e9588f078631de1e1405/svg/stash.svg
+project: https://github.com/stashapp/stash
+icon: icon.svg
