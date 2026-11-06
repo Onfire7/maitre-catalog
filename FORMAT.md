@@ -22,6 +22,14 @@ host_ports:                  # ports the app must own on the Node itself
 port_forward: false          # true: the app is meant to be reached from the internet at
                              # host_ports (a game server); the Console offers to have the
                              # router forward them (UPnP). Off until the user turns it on.
+lan: false                   # true: the Service needs an address of its own on the home
+                             # network (decision 327), which a DNS server does -- port 53
+                             # of a Node is held by the Fleet DNS its containers resolve
+                             # through and can never be published. The container joins a
+                             # macvlan over the Node's LAN interface and owns every port on
+                             # that address. Declares no host_ports and no components, and
+                             # needs the lan_address setting below. A granted option: the
+                             # container is reachable by every device in the home.
 web:                         # the page the Console opens; omit for headless apps
   port: 8096
   path: /
@@ -48,8 +56,12 @@ volumes:                     # named data dirs; placed at <pool>/<service>/<name
 settings:                    # asked at install, available to the template as {{ .Settings.KEY }}
   - key: TZ
     label: Time zone
-    type: timezone           # text | number | password | timezone | bool | device
+    type: timezone           # text | number | password | timezone | bool | device | address
     default: auto
+  - key: lan_address         # the one key `lan: true` asks for, by this name and no other,
+    label: Address on your home network   # so the Console asks for it with no special case
+    type: address            # an address of the home network outside the router's DHCP
+                             # pool; the Node checks it is free and on the right subnet
   - key: DB_PASSWORD
     label: Database password
     type: password

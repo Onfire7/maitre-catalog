@@ -26,16 +26,20 @@ image: docker.io/pihole/pihole:2026.05.0@sha256:70a9c11171ded2eee735d88c127996da
 version: 2026.5.0
 project: https://github.com/pi-hole/pi-hole
 exposure: private
-host_ports:
-  - 53/tcp
-  - 53/udp
+lan: true
 web:
   port: 80
   path: /admin
 volumes:
   - name: pihole
     path: /etc/pihole
+grants:
+  - option: Network=lan
+    why: Takes an address of its own on your home network, which is the address you give your devices as their DNS server. Every device in your home can reach it there, on every port it answers on.
 settings:
+  - key: lan_address
+    label: Address on your home network
+    type: address
   - key: TZ
     label: Time zone
     type: timezone

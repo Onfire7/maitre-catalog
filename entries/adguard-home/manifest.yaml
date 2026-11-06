@@ -3,8 +3,9 @@ name: AdGuard Home
 summary: Block ads and trackers for every device on your network.
 description: |
   A network-wide ad and tracker blocker that works as your home DNS server.
-  Because other devices depend on it, this Node keeps a fixed address and
-  starts AdGuard Home before anything else.
+  It takes an address of its own on your home network, which is the address
+  you give your devices as their DNS server, and starts before anything
+  else on its Node.
 icon: icon.svg
 category: network
 image: docker.io/adguard/adguardhome:v0.107.59@sha256:5d5e3aef39a8c8906a324f0c2da0a6123929e459b57c1e3f05e401dca5c7bf02
@@ -13,12 +14,17 @@ project: https://github.com/AdguardTeam/AdGuardHome
 exposure: private
 own_login: true
 infrastructure: true
-host_ports:
-  - 53/tcp
-  - 53/udp
+lan: true
 web:
   port: 3000
   path: /
+grants:
+  - option: Network=lan
+    why: Takes an address of its own on your home network, which is the address you give your devices as their DNS server. Every device in your home can reach it there, on every port it answers on.
+settings:
+  - key: lan_address
+    label: Address on your home network
+    type: address
 volumes:
   - name: work
     path: /opt/adguardhome/work

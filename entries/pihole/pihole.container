@@ -6,5 +6,3 @@ Environment=FTLCONF_dns_listeningMode=all
 Environment="FTLCONF_webserver_api_password={{ .Settings.WEB_PASSWORD }}"
 Environment="TZ={{ .Settings.TZ }}"
 Volume={{ .Volumes.pihole }}:/etc/pihole:Z
-PublishPort=53:53
-PublishPort=53:53/udp

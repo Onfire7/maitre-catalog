@@ -25,4 +25,5 @@ After the conversion, for the Catalog:
 - The web interface password, fixed at "casaos" in the file, is the setting WEB_PASSWORD, made up at install.
 - AddCapability=NET_ADMIN is removed: Pi-hole needs it only for its own DHCP server, which the entry does not offer; DNS works without it.
 - The HTTPS port 8443 is removed; Caddy serves the web interface.
-- Marked infrastructure, like AdGuard Home: DNS starts before the network is up and its Node keeps a fixed address.
+- Marked infrastructure, like AdGuard Home: DNS starts before the network is up.
+- `lan: true`, like AdGuard Home (decision 327): the published ports 53 are gone, and the Service takes an address of its own on the home network instead. Port 53 of a Node cannot be published at all — the agent answers `<service>.local` for the Node's containers on 10.90.0.2:53 (ADR 0010) and a listening socket there blocks any wildcard bind on the same port.
