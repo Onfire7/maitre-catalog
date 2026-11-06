@@ -5,4 +5,5 @@ Network={{ .Network }}
 Environment="PGID={{ .Settings.PGID }}"
 Environment="PUID={{ .Settings.PUID }}"
 Environment="TZ={{ .Settings.TZ }}"
+Environment="GROCY_BASE_URL=//"
 Volume={{ .Volumes.config }}:/config:Z
