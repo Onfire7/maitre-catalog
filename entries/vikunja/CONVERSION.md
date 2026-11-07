@@ -34,3 +34,7 @@ After the conversion, for the Catalog:
 - VIKUNJA_SERVICE_PUBLICURL is the Service's address on the home network, http://<name>.local/, instead of the file's placeholder.
 - Health is /api/v1/info.
 - Its own volumes mount with Podman's U option: the image runs as a user other than root, and the Node makes a Service's folders as root, so without it the app could not write them (seen on a Node with Vikunja, 2026-11-02).
+
+## Edited by hand
+
+- The database component gained MariaDB's own health check (`healthcheck.sh --connect --innodb_initialized`, the command that image documents) and `wait_healthy: true`, so the app waits for the database to be *accepting connections* rather than for its container to exist. Without it the app raced MariaDB's first start on 2026-11-06 and lost: "Could not connect to db: dial tcp 10.89.4.5:3306: connect: connection refused", five times in twenty-five seconds, and then the start limit held it down for an hour after MariaDB was ready. tandoor's Postgres has had this since it was converted; vikunja never did.

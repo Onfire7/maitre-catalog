@@ -38,6 +38,7 @@ components:
       - db
   - name: db
     image: docker.io/library/mariadb:11@sha256:efb4959ef2c835cd735dbc388eb9ad6aab0c78dd64febcd51bc17481111890c4
+    wait_healthy: true
 source:
   from: casaos
   url: https://github.com/bigbeartechworld/big-bear-casaos/blob/05e3501e90017f2eb74d29f5d5bef13c3615a0af/Apps/vikunja-v2/docker-compose.yml

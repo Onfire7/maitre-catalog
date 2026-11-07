@@ -1,5 +1,10 @@
 [Container]
 Image={{ .Image }}
+HealthCmd=healthcheck.sh --connect --innodb_initialized
+HealthInterval=10s
+HealthTimeout=5s
+HealthRetries=5
+HealthStartPeriod=30s
 Exec='--character-set-server=utf8mb4' '--collation-server=utf8mb4_unicode_ci'
 Environment=MYSQL_DATABASE=vikunja
 Environment="MYSQL_PASSWORD={{ .Settings.VIKUNJA_DATABASE_PASSWORD }}"
