@@ -1,3 +1,8 @@
 [Container]
 Image={{ .Image }}
+HealthCmd=redis-cli ping
+HealthInterval=10s
+HealthTimeout=5s
+HealthRetries=5
+HealthStartPeriod=30s
 Volume={{ .Volumes.redis }}:/data:Z

@@ -1,5 +1,10 @@
 [Container]
 Image={{ .Image }}
+HealthCmd=pg_isready -U docmost -d docmost
+HealthInterval=10s
+HealthTimeout=5s
+HealthRetries=5
+HealthStartPeriod=30s
 Environment=POSTGRES_DB=docmost
 Environment="POSTGRES_PASSWORD={{ .Settings.DB_PASSWORD }}"
 Environment=POSTGRES_USER=docmost

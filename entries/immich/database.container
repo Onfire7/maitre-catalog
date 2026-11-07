@@ -1,5 +1,10 @@
 [Container]
 Image={{ .Image }}
+HealthCmd=pg_isready -U postgres -d immich
+HealthInterval=10s
+HealthTimeout=5s
+HealthRetries=5
+HealthStartPeriod=30s
 Environment=POSTGRES_PASSWORD={{ .Settings.DB_PASSWORD }}
 Environment=POSTGRES_USER=postgres
 Environment=POSTGRES_DB=immich

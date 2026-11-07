@@ -1,5 +1,10 @@
 [Container]
 Image={{ .Image }}
+HealthCmd=mysqladmin ping -h 127.0.0.1
+HealthInterval=10s
+HealthTimeout=5s
+HealthRetries=5
+HealthStartPeriod=30s
 Environment=MYSQL_DATABASE=ghost
 Environment="MYSQL_PASSWORD={{ .Settings.DB_PASSWORD }}"
 Environment="MYSQL_ROOT_PASSWORD={{ .Settings.DB_ROOT_PASSWORD }}"

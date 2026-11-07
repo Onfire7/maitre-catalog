@@ -44,8 +44,10 @@ components:
       - search
   - name: chrome
     image: ghcr.io/karakeep-app/karakeep-chrome:release@sha256:49b5eaf63cac3b6ad6a28b2ce0cd421486f440a49db41221af6c1b3229d139bd
+    wait_healthy: true
   - name: search
     image: docker.io/getmeili/meilisearch:v1.56.1@sha256:b7ba431bf6f9b26cc86132798f3640964147a699cf23f026b74c6c05dbb1d60d
+    wait_healthy: true
 source:
   from: casaos
   url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/b14a0586a972c24b70da43a776ce6cd78b593f59/Apps/Karakeep/docker-compose.yml

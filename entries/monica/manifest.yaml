@@ -39,6 +39,7 @@ components:
       - db
   - name: db
     image: docker.io/library/mariadb:11.8.9@sha256:c4124d1afa875e47f2892edf26b482fa54f796e2f342d3717a04ca091a22a9bd
+    wait_healthy: true
 source:
   from: casaos
   url: https://github.com/IceWhaleTech/CasaOS-AppStore/blob/b14a0586a972c24b70da43a776ce6cd78b593f59/Apps/Monica/docker-compose.yml

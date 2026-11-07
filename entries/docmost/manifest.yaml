@@ -41,8 +41,10 @@ components:
       - redis
   - name: db
     image: docker.io/library/postgres:16-alpine@sha256:0cefaabd882e42bcb2a2f3dc56d3ce4770560ba62fd7f197f1a2e008fd5731ab
+    wait_healthy: true
   - name: redis
     image: docker.io/library/redis:7.4.12-alpine@sha256:8da19c7399dca900c6822a1cf30f9d2285585e2c4b457ff4095b0f4500054d3f
+    wait_healthy: true
 source:
   from: casaos
   url: https://github.com/bigbeartechworld/big-bear-casaos/blob/9196c7c34f9cb6ce801aa0fd8747c5356dd138fa/Apps/docmost/docker-compose.yml

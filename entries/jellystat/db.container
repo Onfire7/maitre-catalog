@@ -1,5 +1,10 @@
 [Container]
 Image={{ .Image }}
+HealthCmd=pg_isready -U postgres -d jfstat
+HealthInterval=10s
+HealthTimeout=5s
+HealthRetries=5
+HealthStartPeriod=30s
 Environment=POSTGRES_DB=jfstat
 Environment="POSTGRES_PASSWORD={{ .Settings.POSTGRES_PASSWORD }}"
 Environment=POSTGRES_USER=postgres

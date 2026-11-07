@@ -1,4 +1,9 @@
 [Container]
 Image={{ .Image }}
+HealthCmd=wget -q -O- http://localhost:9222/json/version
+HealthInterval=10s
+HealthTimeout=5s
+HealthRetries=5
+HealthStartPeriod=30s
 RunInit=true
 Exec='--disable-gpu' '--disable-dev-shm-usage' '--hide-scrollbars' '--disable-blink-features=AutomationControlled' '--window-size=1440,900'

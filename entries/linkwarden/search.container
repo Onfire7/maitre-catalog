@@ -1,5 +1,10 @@
 [Container]
 Image={{ .Image }}
+HealthCmd=curl -fsS http://localhost:7700/health
+HealthInterval=10s
+HealthTimeout=5s
+HealthRetries=5
+HealthStartPeriod=30s
 Environment=MEILI_ENV=production
 Environment="MEILI_MASTER_KEY={{ .Settings.MEILI_MASTER_KEY }}"
 Volume={{ .Volumes.meili_data }}:/meili_data:Z

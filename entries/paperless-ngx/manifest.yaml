@@ -53,8 +53,10 @@ components:
       - db
   - name: broker
     image: docker.io/library/redis:8.10.2@sha256:97ec88159e6d7cfb5ddef9015386087d58a912de80112f06ebdfa78fa5989901
+    wait_healthy: true
   - name: db
     image: docker.io/library/postgres:16@sha256:be01cf82fc7dbba824acf0a82e150b4b360f3ff93c6631d7844af431e841a95c
+    wait_healthy: true
   - name: gotenberg
     image: docker.io/gotenberg/gotenberg:8.38@sha256:aa552cc115db488e0f0bcb07446aac13071ad51505b642c84bb894500907b42b
   - name: tika

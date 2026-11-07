@@ -32,6 +32,7 @@ components:
       - db
   - name: db
     image: docker.io/library/postgres:14.2@sha256:2c954f8c5d03da58f8b82645b783b56c1135df17e650b186b296fa1bb71f9cfd
+    wait_healthy: true
 source:
   from: casaos
   url: https://github.com/bigbeartechworld/big-bear-casaos/blob/05e3501e90017f2eb74d29f5d5bef13c3615a0af/Apps/joplin/docker-compose.yml

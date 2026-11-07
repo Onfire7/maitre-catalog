@@ -1,5 +1,10 @@
 [Container]
 Image={{ .Image }}
+HealthCmd=pg_isready -U paperless -d paperless
+HealthInterval=10s
+HealthTimeout=5s
+HealthRetries=5
+HealthStartPeriod=30s
 Environment=POSTGRES_DB=paperless
 Environment="POSTGRES_PASSWORD={{ .Settings.PAPERLESS_DBPASS }}"
 Environment=POSTGRES_USER=paperless

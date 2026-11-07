@@ -44,6 +44,7 @@ components:
       - db
   - name: db
     image: docker.io/linuxserver/mariadb:10.11.6@sha256:7e34d92147dd7e1b63f43b3e76af73c273d7c3677786c32164a485f2a04964d8
+    wait_healthy: true
 source:
   from: casaos
   url: https://github.com/bigbeartechworld/big-bear-casaos/blob/05e3501e90017f2eb74d29f5d5bef13c3615a0af/Apps/bookstack/docker-compose.yml
